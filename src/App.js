@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
+import Header from './components/Header/Header';
 import AdminPage from './containers/AdminPage/AdminPage';
 import CashierPage from './containers/CashierPage/CashierPage';
 import KitchenPage from './containers/KitchenPage/KitchenPage';
@@ -12,16 +13,21 @@ import SigninPage from './containers/SigninPage/SigninPage';
 const App = () => {
   const routes = (
     <Switch>
-      <Route path='/' component={SigninPage} />
-      <Route path='/admin' component={AdminPage} />
-      <Route path='/waiter' component={WaiterPage} />
-      <Route path='/cashier' component={CashierPage} />
-      <Route path='/kitchen' component={KitchenPage} />
-      <Redirect to='/' exact/>
+      <Route path="/" exact component={SigninPage} />
+      <Route path="/admin" component={AdminPage} />
+      <Route path="/waiter" component={WaiterPage} />
+      <Route path="/cashier" component={CashierPage} />
+      <Route path="/kitchen" component={KitchenPage} />
+      <Redirect to="/" />
     </Switch>
   );
 
-  return <React.Fragment>{routes}</React.Fragment>;
+  return (
+    <React.Fragment>
+      <Header />
+      {routes}
+    </React.Fragment>
+  );
 };
 
 export default App;
