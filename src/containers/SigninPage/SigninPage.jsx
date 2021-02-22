@@ -1,5 +1,4 @@
 import './SigninPage.css';
-import { useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './SignUp';
