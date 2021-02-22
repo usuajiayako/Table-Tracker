@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Card, Button, Alert } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 function Welcome() {
-  return <h2>You have logged in!</h2>;
+  const [error, setError] = useState('');
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+
+  async function handleLogout() {
+    setError('');
+
+    try {
+      await logout();
+      history.push('/');
+    } catch {
+      setError('Failed to log out ');
+    }
+  }
+
+  return (
+    <>
+      <Card>
+        <Card.Body>
+          <h2>Welcome!</h2>
+          {error && <Alert variant='danger'>{error}</Alert>}
+          <strong>Email: </strong>
+          {currentUser.email}
+        </Card.Body>
+      </Card>
+      <div className='w-100 text-center mt-2'>
+        <Button variant='link' onClick={handleLogout}>
+          Log Out
+        </Button>
+      </div>
+    </>
+  );
 }
 
 export default Welcome;

@@ -7,6 +7,7 @@ import Login from './Login';
 import Welcome from './Welcome';
 import { AuthProvider } from '../../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 const SigninPage = () => {
   return (
@@ -20,7 +21,7 @@ const SigninPage = () => {
             <Switch>
               <Route exact path='/' component={Login} />
               <Route path='/signup' component={SignUp} />
-              <Route path='/welcome' component={Welcome} />
+              <PrivateRoute path='/welcome' component={Welcome} />
             </Switch>
           </AuthProvider>
         </Router>
