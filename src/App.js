@@ -13,12 +13,12 @@ import SigninPage from './containers/SigninPage/SigninPage';
 const App = () => {
   const routes = (
     <Switch>
-      <Route path="/" exact component={SigninPage} />
-      <Route path="/admin" component={AdminPage} />
-      <Route path="/waiter" component={WaiterPage} />
-      <Route path="/cashier" component={CashierPage} />
-      <Route path="/kitchen" component={KitchenPage} />
-      <Redirect to="/" />
+      <Route path='/' exact component={SigninPage} />
+      <Route path='/admin' component={AdminPage} />
+      <Route path='/waiter' component={WaiterPage} />
+      <Route path='/cashier' component={CashierPage} />
+      <Route path='/kitchen' component={KitchenPage} />
+      <Redirect to='/' />
     </Switch>
   );
 
