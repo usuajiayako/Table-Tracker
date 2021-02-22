@@ -3,10 +3,11 @@ import { useRef } from 'react';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './SignUp';
+import { AuthProvider } from '../../context/AuthContext';
 
 const SigninPage = () => {
   return (
-    <div>
+    <AuthProvider>
       <Container
         className='d-flex align-items-center justify-content-center'
         style={{ minHeight: '100vh' }}
@@ -15,7 +16,7 @@ const SigninPage = () => {
           <SignUp />
         </div>
       </Container>
-    </div>
+    </AuthProvider>
   );
 };
 
