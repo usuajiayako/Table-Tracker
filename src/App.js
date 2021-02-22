@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
+import { AuthProvider } from './context/AuthContext';
 
 import Header from './components/Header/Header';
 import AllUsersPage from './containers/AllUsersPage/AllUsersPage';
@@ -29,10 +30,10 @@ const App = () => {
   );
 
   return (
-    <React.Fragment>
+    <AuthProvider>
       <Header />
       {routes}
-    </React.Fragment>
+    </AuthProvider>
   );
 };
 
