@@ -1,39 +1,20 @@
 import './SigninPage.css';
 import { useRef } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SignUp from './SignUp';
 
 const SigninPage = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-
   return (
     <div>
-      <Card>
-        <Card.Body>
-          <h2 className='text-center mb-4'>Sign Up</h2>
-        </Card.Body>
-        <Form>
-          <Form.Group id='email'>
-            <Form.Label>Email</Form.Label>
-            <Form.Control type='email' ref={emailRef} required />
-          </Form.Group>
-          <Form.Group id='password'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type='password' ref={passwordRef} required />
-          </Form.Group>
-          <Form.Group id='password-confirm'>
-            <Form.Label>Password Confirmation</Form.Label>
-            <Form.Control type='password' ref={passwordConfirmRef} required />
-          </Form.Group>
-        </Form>
-        <Button type='submit' className='w-100'>
-          Sign Up
-        </Button>
-      </Card>
-      <div className='w-100 text-center mt-2'>
-        Already have an account? Log In
-      </div>
+      <Container
+        className='d-flex align-items-center justify-content-center'
+        style={{ minHeight: '100vh' }}
+      >
+        <div className='w-100' style={{ maxWidth: '400px' }}>
+          <SignUp />
+        </div>
+      </Container>
     </div>
   );
 };
