@@ -1,0 +1,21 @@
+li {
+  margin: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 2px;
+
+    &:hover {
+      color: black;
+    }
+  }
+}

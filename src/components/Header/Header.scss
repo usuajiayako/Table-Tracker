@@ -1,0 +1,19 @@
+header {
+  background-color: grey;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  align-items: center;
+
+  h1 {
+    color: white;
+    letter-spacing: 2px;
+  }
+
+  nav {
+    ul {
+      display: flex;
+      list-style-type: none;
+    }
+  }
+}
