@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './SignUp';
 import Login from './Login';
+import Welcome from './Welcome';
 import { AuthProvider } from '../../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ const SigninPage = () => {
             <Switch>
               <Route exact path='/' component={Login} />
               <Route path='/signup' component={SignUp} />
+              <Route path='/welcome' component={Welcome} />
             </Switch>
           </AuthProvider>
         </Router>
