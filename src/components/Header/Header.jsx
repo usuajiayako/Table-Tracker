@@ -1,5 +1,5 @@
 import NavItem from './NavItem/NavItem';
-import './Header.css';
+import './Header.scss';
 
 const Header = () => {
   return (
@@ -9,8 +9,8 @@ const Header = () => {
         <ul>
           <NavItem link="/admin">Staff</NavItem>
           <NavItem link="/admin/menu">Menu</NavItem>
-          <NavItem link="/admin/new-user">Add new Staff member</NavItem>
-          <NavItem link="/admin/new-food">Add new Food</NavItem>
+          <NavItem link="/admin/new-user">Add Staff</NavItem>
+          <NavItem link="/admin/new-food">Add Food</NavItem>
           <NavItem link="/">Sign Out</NavItem>
         </ul>
       </nav>
