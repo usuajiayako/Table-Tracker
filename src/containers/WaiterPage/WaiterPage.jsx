@@ -31,7 +31,7 @@ const WaiterPage = () => {
     setOrder([]);
   }
   return (
-    <>
+    <div className="waiter_view">
       <h2>Waiter View</h2>
       <ul>
         {tables.map((table) => {
@@ -54,7 +54,7 @@ const WaiterPage = () => {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 };
 
