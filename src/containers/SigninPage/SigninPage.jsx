@@ -34,11 +34,11 @@ function SigninPage() {
       <h2 className="title">Log In</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div class="un " id="email">
+        <div className="un " id="email">
           <label htmlfor="email">Email</label>
           <input type="email" ref={emailRef} value="test@test.com" required />
         </div>
-        <div class="pass" id="password">
+        <div className="pass" id="password">
           <label htmlfor="password">Password</label>
           <input type="password" ref={passwordRef} value="password" required />
         </div>
