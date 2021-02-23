@@ -1,4 +1,4 @@
-import './AllUsersPage.css';
+import './AllUsersPage.scss';
 
 import React from 'react';
 

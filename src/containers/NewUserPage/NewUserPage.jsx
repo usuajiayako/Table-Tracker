@@ -1,4 +1,4 @@
-import './NewUserPage.css';
+import './NewUserPage.scss';
 
 const NewUserPage = () => {
   return <h1>This will be the form for create new staff memeber</h1>;
