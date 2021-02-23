@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import './WaiterPage.css';
 
 function Tables() {
   const [tables] = useState([
@@ -13,7 +14,13 @@ function Tables() {
       <h2>Tables</h2>
       <ul>
         {tables.map((table) => {
-          return <li>{table.name}</li>;
+          return (
+            <li key={table.name}>
+              <div class="table-icon" id={table.name}>
+                {table.name}
+              </div>
+            </li>
+          );
         })}
       </ul>
     </>
