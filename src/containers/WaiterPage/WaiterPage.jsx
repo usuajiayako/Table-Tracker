@@ -1,4 +1,4 @@
-import './WaiterPage.css';
+import './WaiterPage.scss';
 
 import React from 'react';
 
