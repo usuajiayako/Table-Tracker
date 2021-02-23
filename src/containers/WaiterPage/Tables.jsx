@@ -6,7 +6,12 @@ function Tables() {
   const [tables] = useState([
     { name: 'table1' },
     { name: 'table2' },
-    { name: 'table3' }
+    { name: 'table3' },
+    { name: 'table4' },
+    { name: 'table5' },
+    { name: 'round table' },
+    { name: 'more tables' },
+    { name: 'unique table' }
   ]);
 
   return (
