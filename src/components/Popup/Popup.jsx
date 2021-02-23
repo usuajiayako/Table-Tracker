@@ -7,41 +7,9 @@ function Popup({ table, closePopup, menu, order, addToOrder, submitOrder }) {
       <div className="popup_inner">
         <h1>{table}</h1>
         <button onClick={closePopup}>Close Popup</button>
-        <div className="menu_and_order">
-          <div className="menu_wrapper">
-            <h3>Menu</h3>
-            <div>
-              {menu.map((item) => {
-                return (
-                  <p key={item.name}>
-                    {item.name}
-                    <button
-                      onClick={() => {
-                        addToOrder(item);
-                      }}
-                    >
-                      Add to order
-                    </button>
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-          <div className="order_wrapper">
-            <h3>Order</h3>
-            <div>
-              {order.map((item) => {
-                return <p>{item.name}</p>;
-              })}
-            </div>
-            <button
-              onClick={() => {
-                submitOrder(table, order);
-              }}
-            >
-              Submit order
-            </button>
-          </div>
+        <div>
+          <button>Activate table</button>
+          <button>Place order</button>
         </div>
       </div>
     </div>
