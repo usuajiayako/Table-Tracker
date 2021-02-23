@@ -1,4 +1,4 @@
-import './KitchenPage.css';
+import './KitchenPage.scss';
 
 import React from 'react';
 

@@ -4,6 +4,8 @@ import './SigninPage.scss';
 import { useAuth } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
 
+import './SigninPage.scss';
+
 function SigninPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
