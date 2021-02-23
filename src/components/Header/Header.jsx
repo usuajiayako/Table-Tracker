@@ -1,5 +1,5 @@
-import NavItem from './NavItem/NavItem';
-import './Header.scss';
+import NavItem from "./NavItem/NavItem";
+import "./Header.scss";
 
 const Header = () => {
   return (

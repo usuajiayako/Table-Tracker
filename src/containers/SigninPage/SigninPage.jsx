@@ -35,11 +35,11 @@ function SigninPage() {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="un " id="email">
-          <label for="email">Email</label>
+          <label htmlfor="email">Email</label>
           <input type="email" ref={emailRef} required />
         </div>
         <div className="pass" id="password">
-          <label for="password">Password</label>
+          <label htmlfor="password">Password</label>
           <input type="password" ref={passwordRef} required />
         </div>
         <button className="submit" type="submit" disabled={loading}>
