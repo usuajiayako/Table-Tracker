@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { MenuContext } from '../../context/MenuContext';
-
+import MenuItem from './MenuItem/MenuItem';
 import './MenuItems.scss';
 
 const MenuItems = () => {
@@ -13,44 +13,28 @@ const MenuItems = () => {
         <h3 className="title">Starters</h3>
         {starters &&
           starters.map((starter) => {
-            return (
-              <p key={starter.food_id} className="items">
-                {starter.name}
-              </p>
-            );
+            return <MenuItem key={starter.food_id} food={starter} />;
           })}
       </div>
       <div className="course-container">
         <h3 className="title">Mains</h3>
         {mains &&
           mains.map((main) => {
-            return (
-              <p key={main.food_id} className="items">
-                {main.name}
-              </p>
-            );
+            return <MenuItem key={main.food_id} food={main} />;
           })}
       </div>
       <div className="course-container">
         <h3 className="title">Desserts</h3>
         {desserts &&
           desserts.map((dessert) => {
-            return (
-              <p key={dessert.food_id} className="items">
-                {dessert.name}
-              </p>
-            );
+            return <MenuItem key={dessert.food_id} food={dessert} />;
           })}
       </div>
       <div className="course-container">
         <h3 className="title">Drinks</h3>
         {drinks &&
           drinks.map((drink) => {
-            return (
-              <p key={drink.food_id} className="items">
-                {drink.name}
-              </p>
-            );
+            return <MenuItem key={drink.food_id} food={drink} />;
           })}
       </div>
     </>

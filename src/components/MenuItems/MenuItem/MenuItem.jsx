@@ -1,6 +1,17 @@
-import { MenuContext } from '../../../context/MenuContext';
+import { FaPlus, FaMinus } from 'react-icons/fa';
+
 import './MenuItem.scss';
 
-const MenuItem = () => {
-  return <p>Menu Item</p>;
+const MenuItem = ({ food }) => {
+  return (
+    <div className="item-container">
+      <p>{food.name}</p>
+      <div className="action-buttons">
+        <FaPlus />
+        <FaMinus />
+      </div>
+    </div>
+  );
 };
+
+export default MenuItem;
