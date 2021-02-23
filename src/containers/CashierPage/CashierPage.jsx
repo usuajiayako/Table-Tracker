@@ -1,4 +1,4 @@
-import './CashierPage.css';
+import './CashierPage.scss';
 
 import React from 'react';
 
