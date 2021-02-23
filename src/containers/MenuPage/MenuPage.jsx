@@ -1,7 +1,13 @@
+import MenuItems from '../../components/MenuItems/MenuItems';
+import MenuContextProvider from '../../context/MenuContext';
 import './MenuPage.css';
 
 const MenuPage = () => {
-  return <h1>This is the menu page</h1>;
+  return (
+    <MenuContextProvider>
+      <MenuItems />
+    </MenuContextProvider>
+  );
 };
 
 export default MenuPage;
