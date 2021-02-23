@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
 import './SigninPage.scss';
 import { useAuth } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
@@ -29,26 +28,22 @@ function SigninPage() {
   }
 
   return (
-    <div className="login-container">
-      <Card>
-        <Card.Body>
-          <h2 className="title">Log In</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Button type="submit" disabled={loading}>
-              Log In
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+    <div className="login-wrapper">
+      <h2 className="title">Log In</h2>
+      {error && <p>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <div class="form-group" id="email">
+          <label for="email">Email</label>
+          <input type="email" ref={emailRef} required />
+        </div>
+        <div class="form-group" id="password">
+          <label for="password">Password</label>
+          <input type="password" ref={passwordRef} required />
+        </div>
+        <button type="submit" disabled={loading}>
+          Log In
+        </button>
+      </form>
     </div>
   );
 }
