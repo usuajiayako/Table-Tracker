@@ -1,8 +1,8 @@
-import React from 'react';
-import { useRef, useState } from 'react';
-import './SigninPage.scss';
-import { useAuth } from '../../context/AuthContext';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import { useRef, useState } from "react";
+import "./SigninPage.scss";
+import { useAuth } from "../../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 import './SigninPage.scss';
 
@@ -10,7 +10,7 @@ function SigninPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -18,12 +18,12 @@ function SigninPage() {
     event.preventDefault();
 
     try {
-      setError('');
+      setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push('/admin');
+      history.push("/admin");
     } catch {
-      setError('Failed to sign in');
+      setError("Failed to sign in");
     }
 
     setLoading(false);
@@ -34,15 +34,15 @@ function SigninPage() {
       <h2 className="title">Log In</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div class="form-group" id="email">
-          <label for="email">Email</label>
+        <div class="un " id="email">
+          <label htmlfor="email">Email</label>
           <input type="email" ref={emailRef} value="test@test.com" required />
         </div>
-        <div class="form-group" id="password">
-          <label for="password">Password</label>
+        <div class="pass" id="password">
+          <label htmlfor="password">Password</label>
           <input type="password" ref={passwordRef} value="password" required />
         </div>
-        <button type="submit" disabled={loading}>
+        <button className="submit" type="submit" disabled={loading}>
           Log In
         </button>
       </form>

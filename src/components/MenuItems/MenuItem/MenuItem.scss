@@ -1,0 +1,11 @@
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+  }
+}
