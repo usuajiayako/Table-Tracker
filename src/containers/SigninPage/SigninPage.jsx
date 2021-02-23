@@ -32,12 +32,12 @@ function SigninPage() {
       <h2 className="title">Log In</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div class="form-group" id="email">
-          <label for="email">Email</label>
+        <div className="form-group" id="email">
+          <label htmlfor="email">Email</label>
           <input type="email" ref={emailRef} required />
         </div>
-        <div class="form-group" id="password">
-          <label for="password">Password</label>
+        <div className="form-group" id="password">
+          <label htmlfor="password">Password</label>
           <input type="password" ref={passwordRef} required />
         </div>
         <button type="submit" disabled={loading}>
