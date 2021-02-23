@@ -36,11 +36,11 @@ function SigninPage() {
       <form onSubmit={handleSubmit}>
         <div class="form-group" id="email">
           <label for="email">Email</label>
-          <input type="email" ref={emailRef} required />
+          <input type="email" ref={emailRef} value="test@test.com" required />
         </div>
         <div class="form-group" id="password">
           <label for="password">Password</label>
-          <input type="password" ref={passwordRef} required />
+          <input type="password" ref={passwordRef} value="password" required />
         </div>
         <button type="submit" disabled={loading}>
           Log In
