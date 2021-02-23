@@ -1,15 +1,19 @@
-import React from "react";
-import "./popup.scss";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import './popup.scss';
 
-function Popup({ table, closePopup, menu, order, addToOrder, submitOrder }) {
+function Popup({ tableName, closePopup }) {
+  const history = useHistory();
   return (
     <div className="popup">
       <div className="popup_inner">
-        <h1>{table}</h1>
+        <h1>{tableName}</h1>
         <button onClick={closePopup}>Close Popup</button>
         <div>
           <button>Activate table</button>
-          <button>Place order</button>
+          <button onClick={() => history.push(`/menu?${tableName}`)}>
+            Place order
+          </button>
         </div>
       </div>
     </div>

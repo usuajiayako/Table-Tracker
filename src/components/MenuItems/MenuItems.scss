@@ -1,7 +1,14 @@
-.course-container {
+.courses-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 20px 40px;
-  background-color: rgb(191, 188, 188);
   letter-spacing: 2px;
+
+  .course {
+    min-width: 48%;
+    background-color: rgb(191, 188, 188);
+  }
 
   .title {
     margin: 0;

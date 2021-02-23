@@ -4,7 +4,7 @@ import './Header.scss';
 import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
-  const { currentUser, logout } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   return (
     <header>
       <h1>Table Tracker</h1>
@@ -14,15 +14,17 @@ const Header = () => {
             <NavItem link="/">Sign In</NavItem>
           ) : currentUser.email === 'test@test.com' ? (
             <>
+              <NavItem link="/menu">Menu</NavItem>
               <NavItem link="/admin">Staff</NavItem>
-              <NavItem link="/admin/menu">Menu</NavItem>
               <NavItem link="/admin/new-user">Add Staff</NavItem>
               <NavItem link="/admin/new-food">Add Food</NavItem>
-              <NavItem link="/">Sign Out</NavItem>
+              <NavItem link="/" signout={true}>
+                Sign Out
+              </NavItem>
             </>
           ) : (
             <>
-              <NavItem link="/admin/menu">Menu</NavItem>
+              <NavItem link="/menu">Menu</NavItem>
               <NavItem link="/" signout={true}>
                 Sign Out
               </NavItem>
