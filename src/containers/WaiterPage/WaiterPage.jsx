@@ -1,6 +1,6 @@
-import './WaiterPage.css';
-import React from 'react';
-import Tables from './Tables';
+import "./WaiterPage.scss";
+import React from "react";
+import Tables from "./Tables";
 
 const WaiterPage = () => {
   return (

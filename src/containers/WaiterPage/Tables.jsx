@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./WaiterPage.css";
+import "./WaiterPage.scss";
 import Popup from "../../components/Popup/Popup";
 
 function Tables() {
