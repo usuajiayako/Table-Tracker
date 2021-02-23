@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .env.local 
+table-tracker-dev-firebase-adminsdk-zh87c-250835bf85.json

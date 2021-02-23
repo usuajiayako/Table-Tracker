@@ -1,18 +1,34 @@
-import React from 'react';
-import { useState } from 'react';
-import './WaiterPage.css';
+import React from "react";
+import { useState } from "react";
+import "./WaiterPage.css";
+import Popup from "../../components/Popup/Popup";
 
 function Tables() {
   const [tables] = useState([
-    { name: 'table1' },
-    { name: 'table2' },
-    { name: 'table3' },
-    { name: 'table4' },
-    { name: 'table5' },
-    { name: 'round table' },
-    { name: 'more tables' },
-    { name: 'unique table' }
+    { name: "table1" },
+    { name: "table2" },
+    { name: "table3" },
   ]);
+  const [showPopup, setShowPopup] = useState(false);
+  const [menu] = useState([
+    { name: "pasta" },
+    { name: "salad" },
+    { name: "tacos" },
+  ]);
+  const [order, setOrder] = useState([]);
+
+  function togglePopup() {
+    setShowPopup(!showPopup);
+  }
+
+  function addToOrder(item) {
+    setOrder([item, ...order]);
+  }
+
+  function submitOrder(table, order) {
+    console.log(table, order);
+    setOrder([]);
+  }
 
   return (
     <>
@@ -21,9 +37,19 @@ function Tables() {
         {tables.map((table) => {
           return (
             <li key={table.name}>
-              <div class="table-icon" id={table.name}>
+              <div class="table-icon" id={table.name} onClick={togglePopup}>
                 {table.name}
               </div>
+              {showPopup ? (
+                <Popup
+                  table={table.name}
+                  menu={menu}
+                  order={order}
+                  closePopup={togglePopup.bind(this)}
+                  addToOrder={addToOrder.bind(this)}
+                  submitOrder={submitOrder.bind(this)}
+                />
+              ) : null}
             </li>
           );
         })}
