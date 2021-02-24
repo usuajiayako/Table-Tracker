@@ -1,7 +1,6 @@
 .waiter_view {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 20px 40px;
   align-items: center;
   text-transform: capitalize;
@@ -10,13 +9,12 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     flex-grow: 4;
+    align-content: space-between;
   }
 
   .table-icon {
     text-align: center;
-    background-color: green;
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -24,5 +22,31 @@
     line-height: 100px;
     font-size: 25px;
     border: solid black 2px;
+  }
+
+  .default {
+    background-color: grey;
+  }
+
+  .active {
+    background-color: red;
+  }
+
+  .waiting-food {
+    background-color: orange;
+  }
+
+  .served {
+    background-color: green;
+  }
+
+  .waiter-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

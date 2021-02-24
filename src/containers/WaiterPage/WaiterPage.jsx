@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import './WaiterPage.scss';
+import React, { useState } from "react";
+import "./WaiterPage.scss";
+import { useHistory } from "react-router-dom";
 
-import Popup from '../../components/Popup/Popup';
+import Popup from "../../components/Popup/Popup";
 
 const WaiterPage = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [activeTable, setActiveTable] = useState('');
+  const [activeTable, setActiveTable] = useState("");
   const [tables] = useState([
-    { name: 'table1' },
-    { name: 'table2' },
-    { name: 'table3' },
+    { name: "table1", status: "default" },
+    { name: "table2", status: "active" },
+    { name: "table3", status: "waiting-food" },
+    { name: "table4", status: "served" },
   ]);
 
-  function togglePopup(tableName) {
-    if (tableName) {
-      setActiveTable(tableName);
+  function togglePopup(table) {
+    if (table) {
+      setActiveTable(table);
     }
     setShowPopup(!showPopup);
   }
+
+  function updateTableStatus(table, newStatus) {
+    setActiveTable((table.status = newStatus));
+  }
+
+  const history = useHistory();
 
   return (
     <div className="waiter_view">
@@ -27,9 +35,9 @@ const WaiterPage = () => {
           return (
             <li key={table.name}>
               <div
-                className="table-icon"
+                className={`table-icon ${table.status}`}
                 id={table.name}
-                onClick={() => togglePopup(table.name)}
+                onClick={() => togglePopup(table)}
               >
                 {table.name}
               </div>
@@ -37,7 +45,22 @@ const WaiterPage = () => {
           );
         })}
       </ul>
-      {showPopup && <Popup tableName={activeTable} closePopup={togglePopup} />}
+      {showPopup && (
+        <Popup
+          table={activeTable}
+          closePopup={togglePopup}
+          updateTableStatus={updateTableStatus}
+        />
+      )}
+      <div className="waiter-footer">
+        <button
+          onClick={() => {
+            history.push("/kitchen");
+          }}
+        >
+          View all orders
+        </button>
+      </div>
     </div>
   );
 };
