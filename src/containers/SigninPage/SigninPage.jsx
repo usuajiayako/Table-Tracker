@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
-import './SigninPage.scss';
-import { useAuth } from '../../context/AuthContext';
-import { useHistory } from 'react-router-dom';
+import React, { useRef, useState } from "react";
+import "./SigninPage.scss";
+import { useAuth } from "../../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
-import './SigninPage.scss';
+import "./SigninPage.scss";
 
 function SigninPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -17,12 +17,12 @@ function SigninPage() {
     event.preventDefault();
 
     try {
-      setError('');
+      setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push('/waiter');
+      history.push("/waiter");
     } catch {
-      setError('Failed to sign in');
+      setError("Failed to sign in");
     }
 
     setLoading(false);
@@ -34,11 +34,11 @@ function SigninPage() {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="un " id="email">
-          <label htmlfor="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input type="email" ref={emailRef} value="test@test.com" required />
         </div>
         <div className="pass" id="password">
-          <label htmlfor="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input type="password" ref={passwordRef} value="password" required />
         </div>
         <button className="submit" type="submit" disabled={loading}>
