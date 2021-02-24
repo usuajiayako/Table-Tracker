@@ -7,8 +7,12 @@ const MenuItem = ({ food }) => {
     <div className="item-container">
       <p>{food.name}</p>
       <div className="action-buttons">
-        <FaPlus />
-        <FaMinus />
+        <div>
+          <FaPlus size={20} />
+        </div>
+        <div>
+          <FaMinus size={20} />
+        </div>
       </div>
     </div>
   );

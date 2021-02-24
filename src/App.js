@@ -18,8 +18,8 @@ const App = () => {
   const routes = (
     <Switch>
       <Route path="/" exact component={SigninPage} />
+      <Route path="/menu" component={MenuPage} />
       <Route path="/admin" exact component={AllUsersPage} />
-      <Route path="/admin/menu" component={MenuPage} />
       <Route path="/admin/new-user" component={NewUserPage} />
       <Route path="/admin/new-food" component={NewFoodPage} />
       <Route path="/waiter" component={WaiterPage} />
