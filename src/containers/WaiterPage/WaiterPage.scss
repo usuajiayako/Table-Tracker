@@ -1,7 +1,6 @@
 .waiter_view {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 20px 40px;
   align-items: center;
   text-transform: capitalize;
@@ -10,7 +9,6 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     flex-grow: 4;
   }
 
@@ -24,5 +22,15 @@
     line-height: 100px;
     font-size: 25px;
     border: solid black 2px;
+  }
+
+  .waiter-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

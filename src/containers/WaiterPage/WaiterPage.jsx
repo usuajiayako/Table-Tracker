@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import './WaiterPage.scss';
+import React, { useState } from "react";
+import "./WaiterPage.scss";
+import { useHistory } from "react-router-dom";
 
-import Popup from '../../components/Popup/Popup';
+import Popup from "../../components/Popup/Popup";
 
 const WaiterPage = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [activeTable, setActiveTable] = useState('');
+  const [activeTable, setActiveTable] = useState("");
   const [tables] = useState([
-    { name: 'table1' },
-    { name: 'table2' },
-    { name: 'table3' },
+    { name: "table1" },
+    { name: "table2" },
+    { name: "table3" },
   ]);
 
   function togglePopup(tableName) {
@@ -18,6 +19,7 @@ const WaiterPage = () => {
     }
     setShowPopup(!showPopup);
   }
+  const history = useHistory();
 
   return (
     <div className="waiter_view">
@@ -38,6 +40,15 @@ const WaiterPage = () => {
         })}
       </ul>
       {showPopup && <Popup tableName={activeTable} closePopup={togglePopup} />}
+      <div className="waiter-footer">
+        <button
+          onClick={() => {
+            history.push("/kitchen");
+          }}
+        >
+          View all orders
+        </button>
+      </div>
     </div>
   );
 };
