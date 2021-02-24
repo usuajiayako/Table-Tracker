@@ -5,7 +5,7 @@ import { MenuContext } from '../../context/MenuContext';
 import MenuItem from './MenuItem/MenuItem';
 import './MenuItems.scss';
 
-const MenuItems = (props) => {
+const MenuItems = () => {
   const history = useHistory();
   const { starters, mains, desserts, drinks } = useContext(MenuContext);
   const [tableName, setTableName] = useState('');
@@ -13,6 +13,7 @@ const MenuItems = (props) => {
   useEffect(() => {
     setTableName(history.location.search.substring(1));
   }, [history]);
+
   return (
     <>
       <h1>Order for Table {tableName}</h1>
