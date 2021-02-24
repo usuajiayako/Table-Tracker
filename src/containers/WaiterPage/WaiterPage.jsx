@@ -23,6 +23,8 @@ const WaiterPage = () => {
 
   function updateTableStatus(table, newStatus) {
     setActiveTable((table.status = newStatus));
+    setShowPopup(!showPopup);
+    console.log(tables);
   }
 
   const history = useHistory();
