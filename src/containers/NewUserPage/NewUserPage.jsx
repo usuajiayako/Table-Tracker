@@ -1,7 +1,12 @@
-import './NewUserPage.scss';
+import "./NewUserPage.scss";
+import StaffForm from "../../components/StaffForm/StaffForm";
 
 const NewUserPage = () => {
-  return <h1>This will be the form for create new staff memeber</h1>;
+  return (
+    <div className="form-wrapper">
+      <StaffForm />
+    </div>
+  );
 };
 
 export default NewUserPage;
