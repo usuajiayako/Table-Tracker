@@ -8,8 +8,17 @@ function StaffForm() {
   const [password, setPassword] = useState("");
   const [staffRole, setStaffRole] = useState("");
 
-  const submitStaffForm = () => {
-    //hello
+  const submitStaffForm = (event) => {
+    event.preventDefault();
+    const staffInfo = {
+      firstName: firstName,
+      surname: surname,
+      email: email,
+      password: password,
+      staffRole: staffRole,
+    };
+
+    // addNewStaff(staffInfo);
   };
 
   return (
