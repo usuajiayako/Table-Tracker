@@ -8,6 +8,7 @@ const MenuContextProvider = (props) => {
   const [mains, setMains] = useState();
   const [desserts, setDesserts] = useState();
   const [drinks, setDrinks] = useState();
+  const [foodItems, setFoodItems] = useState([]);
 
   useEffect(() => {
     setStarters(food.filter((item) => item.course === 'starter'));
@@ -16,6 +17,11 @@ const MenuContextProvider = (props) => {
     setDrinks(food.filter((item) => item.course === 'drink'));
   }, []);
 
+  const addFood = (foodInfo) => {
+    console.log(foodInfo, 'context');
+    setFoodItems([...foodItems, foodInfo]);
+  };
+
   return (
     <MenuContext.Provider
       value={{
@@ -23,6 +29,7 @@ const MenuContextProvider = (props) => {
         mains,
         desserts,
         drinks,
+        addFood,
       }}
     >
       {props.children}
