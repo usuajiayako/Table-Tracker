@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { MenuContext } from '../../context/MenuContext';
+import { OrderContext } from '../../context/OrderContext';
 import MenuItem from './MenuItem/MenuItem';
 import Order from '../Order/Order';
 import './MenuItems.scss';
@@ -9,6 +10,7 @@ import './MenuItems.scss';
 const MenuItems = () => {
   const history = useHistory();
   const { starters, mains, desserts, drinks } = useContext(MenuContext);
+  const { sendOrder } = useContext(OrderContext);
   const [tableName, setTableName] = useState('');
   const [order, setOrder] = useState([]);
 
@@ -33,7 +35,7 @@ const MenuItems = () => {
       tableName: tableName,
       order: order,
     };
-    console.log(finalisedOrder);
+    sendOrder(finalisedOrder);
   };
 
   return (
