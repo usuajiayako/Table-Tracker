@@ -1,0 +1,15 @@
+.orders_list {
+  border: red solid 2px;
+
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  .order_card {
+    border: blue solid 2px;
+  }
+
+  .food_list {
+    border: green solid 2px;
+  }
+}
