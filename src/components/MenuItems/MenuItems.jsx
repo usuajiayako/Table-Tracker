@@ -41,7 +41,6 @@ const MenuItems = () => {
   return (
     <>
       <h1>Order for Table {tableName}</h1>
-      <button onClick={submitOrder}>Submit Order</button>
       <div className="courses-container">
         <div className="course">
           <h3 className="title">Starters</h3>
@@ -98,7 +97,9 @@ const MenuItems = () => {
             })}
         </div>
       </div>
+      <h3>Order:</h3>
       <Order order={order} />
+      <button onClick={submitOrder}>Submit Order</button>
     </>
   );
 };
