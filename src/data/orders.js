@@ -46,7 +46,6 @@ export const orderData = [
     food_items: [
       { name: 'Chicken Skewers', course: 'starter' },
       { name: 'Lasagne', course: 'main' },
-      { name: 'Fruit Cale', course: 'dessert' },
       { name: 'Water', course: 'drink' },
     ],
   },
@@ -80,6 +79,7 @@ export const orderData = [
     food_items: [
       { name: 'Chicken Skewers', course: 'starter' },
       { name: 'Lasagne', course: 'main' },
+      { name: 'Tacos', course: 'main' },
       { name: 'Fruit Cale', course: 'dessert' },
       { name: 'Water', course: 'drink' },
     ],

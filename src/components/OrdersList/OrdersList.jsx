@@ -14,31 +14,30 @@ function OrdersList() {
 
   return (
     <>
-      <h2>Active Orders</h2>
       <ul className="orders_list">
         {orders.map((order) => {
           return (
             <li key={order.order_id} className="order_card">
-              <strong>Table: {order.table_id}</strong>
-              <p>Notes: {order.description}</p>
+              <h2>Table: {order.table_id}</h2>
+              <p className="order_item">Notes: {order.description}</p>
               <div className="food_list">
-                <strong>Order:</strong>
+                <h3>Order:</h3>
                 {order.food_items.map((item) => {
                   return (
-                    <>
+                    <div className="order_item">
                       <p>Course: {item.course}</p>
                       <p>Food item: {item.name}</p>
-                    </>
+                    </div>
                   );
                 })}
               </div>
-              <p>
-                Order time:{' '}
+              <button>Ready to serve</button>
+              <h3 className="order_time">
+                Order time:
                 {new Intl.DateTimeFormat('en-GB', dateOptions).format(
                   order.created_at
                 )}
-              </p>
-              <button>Ready to serve</button>
+              </h3>
             </li>
           );
         })}

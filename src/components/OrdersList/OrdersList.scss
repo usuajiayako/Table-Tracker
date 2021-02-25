@@ -1,15 +1,29 @@
 .orders_list {
-  border: red solid 2px;
-
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  letter-spacing: 2px;
+  position: relative;
 
   .order_card {
-    border: blue solid 2px;
-  }
+    background-color: rgb(191, 188, 188);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: red solid 2px;
 
-  .food_list {
-    border: green solid 2px;
+    h2 {
+      padding: 10px 0 10px 20px;
+      background-color: grey;
+    }
+
+    h3 {
+      padding: 10px 0 10px 20px;
+      background-color: grey;
+    }
+    .order_item {
+      padding: 10px 0 10px 20px;
+    }
   }
 }
