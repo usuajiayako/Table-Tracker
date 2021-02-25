@@ -1,9 +1,16 @@
 import './AllUsersPage.scss';
+import { StaffContextProvider } from '../../context/StaffContext';
+
+import UsersList from '../../components/UsersList/UsersList';
 
 import React from 'react';
 
 const AdminPage = () => {
-  return <h1>This will be the staff profile list - default for admin</h1>;
+  return (
+    <StaffContextProvider>
+      <UsersList />
+    </StaffContextProvider>
+  );
 };
 
 export default AdminPage;
