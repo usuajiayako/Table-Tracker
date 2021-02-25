@@ -1,11 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import './SigninPage.scss';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth, AuthContext } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
 
 import './SigninPage.scss';
 
 function SigninPage() {
+  const { currentUser } = useContext(AuthContext);
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
@@ -29,23 +30,41 @@ function SigninPage() {
   }
 
   return (
-    <div className="login-wrapper">
-      <h2 className="title">Log In</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="un " id="email">
-          <label htmlFor="email">Email</label>
-          <input type="email" ref={emailRef} value="test@test.com" required />
+    <>
+      {!currentUser ? (
+        <div className="login-wrapper">
+          <h2 className="title">Log In</h2>
+          {error && <p>{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <div className="un " id="email">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                ref={emailRef}
+                value="test@test.com"
+                required
+              />
+            </div>
+            <div className="pass" id="password">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                ref={passwordRef}
+                value="password"
+                required
+              />
+            </div>
+            <button className="submit" type="submit" disabled={loading}>
+              Log In
+            </button>
+          </form>
         </div>
-        <div className="pass" id="password">
-          <label htmlFor="password">Password</label>
-          <input type="password" ref={passwordRef} value="password" required />
+      ) : (
+        <div className="login-wrapper">
+          <h2 className="title">Welcome!</h2>
         </div>
-        <button className="submit" type="submit" disabled={loading}>
-          Log In
-        </button>
-      </form>
-    </div>
+      )}
+    </>
   );
 }
 
