@@ -4,17 +4,19 @@ import { MenuContext } from '../../context/MenuContext';
 const FoodForm = () => {
   const { addFood } = useContext(MenuContext);
   const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
+  const [price, setPrice] = useState(0);
   const [course, setCourse] = useState('');
+
+  console.log(price, 'price');
 
   const submitForm = (e) => {
     e.preventDefault();
     const foodInfo = {
       name: name,
-      price: price,
-      course: course,
+      price: Number(price),
+      course: course.toLowerCase(),
     };
-
+    console.log(foodInfo);
     addFood(foodInfo);
   };
   return (
@@ -31,7 +33,7 @@ const FoodForm = () => {
       <label htmlFor="price">
         Price
         <input
-          type="text"
+          type="number"
           name="price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}

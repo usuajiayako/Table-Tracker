@@ -19,13 +19,13 @@ const MenuContextProvider = (props) => {
   }, []);
 
   const addFood = (foodInfo) => {
-    console.log(foodInfo, 'context');
     // setFoodItems([...foodItems, foodInfo]);
     (async () => {
       try {
         await axios.post('http://localhost:9090/api/food-items', {
           foodInfo,
         });
+        console.log('new food has been added');
       } catch (error) {
         console.log(error.message, 'Adding this food has failed');
       }
