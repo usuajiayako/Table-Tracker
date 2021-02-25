@@ -1,18 +1,18 @@
-import './KitchenPage.scss';
+import './ViewOrders.scss';
 import OrdersList from '../../components/OrdersList/OrdersList';
 import OrderContextProvider from '../../context/OrderContext';
 
 import React from 'react';
 
-const KitchenPage = () => {
+function ViewOrders() {
   return (
     <>
-      <h1>Kitchen orders</h1>
+      <h1>Active orders</h1>
       <OrderContextProvider>
         <OrdersList />
       </OrderContextProvider>
     </>
   );
-};
+}
 
-export default KitchenPage;
+export default ViewOrders;

@@ -13,6 +13,7 @@ import CashierPage from './containers/CashierPage/CashierPage';
 import KitchenPage from './containers/KitchenPage/KitchenPage';
 import WaiterPage from './containers/WaiterPage/WaiterPage';
 import SigninPage from './containers/SigninPage/SigninPage';
+import ViewOrders from './containers/ViewOrders/ViewOrders';
 
 const App = () => {
   const routes = (
@@ -25,6 +26,7 @@ const App = () => {
       <Route path="/waiter" component={WaiterPage} />
       <Route path="/cashier" component={CashierPage} />
       <Route path="/kitchen" component={KitchenPage} />
+      <Route path="/view-orders" component={ViewOrders} />
       <Redirect to="/" />
     </Switch>
   );
