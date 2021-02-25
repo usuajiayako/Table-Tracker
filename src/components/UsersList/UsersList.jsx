@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import './UsersList.scss';
 
 import { StaffContext } from '../../context/StaffContext';
 
@@ -8,13 +9,13 @@ function UsersList() {
 
   return (
     <>
-      <h2>Users List</h2>
-      <ul>
+      <h1>Users List</h1>
+      <ul className="users_list">
         {users ? (
           users.map((user) => {
             return (
-              <li key={user.email}>
-                <h2>
+              <li key={user.email} className="user_card">
+                <h2 className="title">
                   {user.first_name} {user.last_name}
                 </h2>
                 <p>Email: {user.email}</p>
