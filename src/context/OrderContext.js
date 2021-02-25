@@ -2,6 +2,10 @@ import React, { createContext, useState, useEffect } from 'react';
 import { orderData as ordersArr } from '../data/orders';
 
 export const OrderContext = createContext();
+  
+  const sendOrder = (finalisedOrder) => {
+  console.log(finalisedOrder);
+};
 
 export const OrderContextProvider = (props) => {
   const [orders, setOrders] = useState([]);
@@ -11,7 +15,7 @@ export const OrderContextProvider = (props) => {
   }, []);
 
   return (
-    <OrderContext.Provider value={{ orders }}>
+    <OrderContext.Provider value={{ orders, sendOrder }}>
       {props.children}
     </OrderContext.Provider>
   );
