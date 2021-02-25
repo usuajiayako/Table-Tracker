@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import NavItem from "./NavItem/NavItem";
-import "./Header.scss";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useContext } from 'react';
+import NavItem from './NavItem/NavItem';
+import './Header.scss';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
   const { currentUser } = useContext(AuthContext);
@@ -12,10 +12,10 @@ const Header = () => {
         <ul>
           {!currentUser ? (
             <NavItem link="/">Sign In</NavItem>
-          ) : currentUser.email === "test@test.com" ? (
+          ) : currentUser.email === 'test@test.com' ? (
             <>
               <NavItem link="/waiter">Tables</NavItem>
-              <NavItem link="/menu">Menu</NavItem>
+              <NavItem link="/kitchen">Kitchen</NavItem>
               <NavItem link="/admin">Staff</NavItem>
               <NavItem link="/admin/new-user">Add Staff</NavItem>
               <NavItem link="/admin/new-food">Add Food</NavItem>
@@ -26,7 +26,7 @@ const Header = () => {
           ) : (
             <>
               <NavItem link="/waiter">Tables</NavItem>
-              <NavItem link="/menu">Menu</NavItem>
+              <NavItem link="/kitchen">Kitchen</NavItem>
               <NavItem link="/" signout={true}>
                 Sign Out
               </NavItem>

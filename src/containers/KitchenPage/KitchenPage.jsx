@@ -1,6 +1,6 @@
 import './KitchenPage.scss';
 import OrdersList from '../../components/OrdersList/OrdersList';
-import { OrderContextProvider } from '../../context/OrderContext';
+import OrderContextProvider from '../../context/OrderContext';
 
 import React from 'react';
 
