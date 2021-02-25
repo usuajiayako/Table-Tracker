@@ -1,15 +1,17 @@
-import React, { useContext, useState } from "react";
-import "./StaffForm.scss";
-import { StaffContext } from "../../context/StaffContext";
+import React, { useContext, useState } from 'react';
+import './StaffForm.scss';
+import { StaffContext } from '../../context/StaffContext';
+import { AuthContext } from '../../context/AuthContext';
 
 function StaffForm() {
   const { addNewStaff } = useContext(StaffContext);
+  const { signup } = useContext(AuthContext);
 
-  const [firstName, setFirstName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [staffRole, setStaffRole] = useState("Staff");
+  const [firstName, setFirstName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [staffRole, setStaffRole] = useState('Staff');
 
   const submitStaffForm = (event) => {
     event.preventDefault();
@@ -22,6 +24,7 @@ function StaffForm() {
     };
 
     addNewStaff(staffInfo);
+    signup(email, password);
   };
 
   return (
