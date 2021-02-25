@@ -61,7 +61,8 @@ function SigninPage() {
         </div>
       ) : (
         <div className="login-wrapper">
-          <h2 className="title">Welcome!</h2>
+          <h2 className="title">Welcome to Table Tracker!</h2>
+          <p>You are currently logged in as {currentUser.email}</p>
         </div>
       )}
     </>
