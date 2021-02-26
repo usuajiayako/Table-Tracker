@@ -4,7 +4,7 @@ import { StaffContext } from '../../context/StaffContext';
 import { AuthContext } from '../../context/AuthContext';
 
 function StaffForm() {
-  const { addNewStaff } = useContext(StaffContext);
+  const { addUser } = useContext(StaffContext);
   const { signup } = useContext(AuthContext);
 
   const [firstName, setFirstName] = useState('');
@@ -16,14 +16,14 @@ function StaffForm() {
   const submitStaffForm = (event) => {
     event.preventDefault();
     const staffInfo = {
-      firstName: firstName,
-      surname: surname,
+      first_name: firstName,
+      last_name: surname,
       email: email,
       password: password,
-      staffRole: staffRole,
+      role: staffRole,
     };
 
-    addNewStaff(staffInfo);
+    addUser(staffInfo);
     signup(email, password);
   };
 

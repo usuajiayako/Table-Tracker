@@ -22,6 +22,17 @@ export const StaffContextProvider = (props) => {
     })();
   }, []);
 
+  const addUser = (userInfo) => {
+    (async () => {
+      try {
+        await axios.post('http://localhost:9090/api/users', userInfo);
+        console.log('New user added');
+      } catch (error) {
+        console.log(error.message, 'Adding new user failed');
+      }
+    })();
+  };
+
   return (
     <StaffContext.Provider value={{ addNewStaff, staff }}>
       {props.children}
