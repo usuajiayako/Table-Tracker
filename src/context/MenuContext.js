@@ -18,7 +18,6 @@ const MenuContextProvider = (props) => {
         setMains(foodItems.filter((item) => item.course === 'main'));
         setDesserts(foodItems.filter((item) => item.course === 'dessert'));
         setDrinks(foodItems.filter((item) => item.course === 'drinks'));
-        console.log('Got all foods', foodItems);
       } catch (error) {
         console.log(error.message, 'Error getting all food items');
       }

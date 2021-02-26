@@ -8,8 +8,6 @@ const FoodForm = () => {
   const [price, setPrice] = useState(0);
   const [course, setCourse] = useState('');
 
-  console.log(price, 'price');
-
   const submitForm = (e) => {
     e.preventDefault();
     const foodInfo = {
