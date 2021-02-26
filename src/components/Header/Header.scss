@@ -12,27 +12,29 @@ header {
     letter-spacing: 2px;
   }
 
-  nav {
-    .nav-list {
-      display: flex;
-      list-style-type: none;
-    }
+  .nav-list {
+    display: flex;
+    list-style-type: none;
   }
 
   .icon {
     display: none;
   }
 
-  @media (max-width: $tablet-breakpoint) {
-    background-color: green;
-
-    .nav-list-item {
-      display: none;
-    }
-
+  @media screen and (max-width: $tablet-breakpoint) {
     .icon {
       display: flex;
       float: right;
+    }
+
+    .nav-list {
+      display: none;
+    }
+
+    .nav-list.drop-down {
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
   }
 }
