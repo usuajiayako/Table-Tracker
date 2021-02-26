@@ -1,14 +1,25 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { usersData } from '../data/users';
+// import { usersData } from '../data/users';
 
 export const StaffContext = createContext();
 
 export const StaffContextProvider = (props) => {
-  const [users, setUsers] = useState();
+  const addNewStaff = (staffInfo) => {
+    console.log(staffInfo);
+  };
+
+  const [staff, setStaff] = useState([]);
 
   useEffect(() => {
-    setUsers(usersData);
+    (async () => {
+      try {
+        const users = await axios.get('http://localhost:9090/api/users');
+        setStaff(users.data.users);
+      } catch (error) {
+        console.log('No users found');
+      }
+    })();
   }, []);
 
   const addUser = (userInfo) => {
@@ -23,7 +34,7 @@ export const StaffContextProvider = (props) => {
   };
 
   return (
-    <StaffContext.Provider value={{ users, addUser }}>
+    <StaffContext.Provider value={{ addNewStaff, staff }}>
       {props.children}
     </StaffContext.Provider>
   );

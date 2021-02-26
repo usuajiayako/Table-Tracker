@@ -4,15 +4,14 @@ import './UsersList.scss';
 import { StaffContext } from '../../context/StaffContext';
 
 function UsersList() {
-  const { users } = useContext(StaffContext);
-  console.log(users);
+  const { staff } = useContext(StaffContext);
 
   return (
     <>
       <h1>Users List</h1>
       <ul className="users_list">
-        {users ? (
-          users.map((user) => {
+        {staff ? (
+          staff.map((user) => {
             return (
               <li key={user.email} className="user_card">
                 <h2 className="title">
@@ -24,7 +23,7 @@ function UsersList() {
             );
           })
         ) : (
-          <p>Loading users...</p>
+          <p>Loading staff...</p>
         )}
       </ul>
     </>
