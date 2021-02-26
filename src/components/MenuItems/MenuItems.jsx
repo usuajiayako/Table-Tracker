@@ -11,12 +11,16 @@ const MenuItems = () => {
   const history = useHistory();
   const { starters, mains, desserts, drinks } = useContext(MenuContext);
   const { sendOrder } = useContext(OrderContext);
+  // const { allFood } = useContext(MenuContext);
   const [tableName, setTableName] = useState('');
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
     setTableName(history.location.search.substring(1));
   }, [history]);
+
+  // useEffect(() => {
+  // }, []);
 
   const handleAddRemove = (food, num) => {
     if (num === 1) {
@@ -45,12 +49,13 @@ const MenuItems = () => {
         <div className="course">
           <h3 className="title">Starters</h3>
           {starters &&
-            starters.map((starter) => {
+            starters.map((starter, index) => {
               return (
                 <MenuItem
-                  key={starter.food_id}
+                  key={index}
                   food={starter}
                   handleAddRemove={handleAddRemove}
+                  default
                 />
               );
             })}
@@ -58,10 +63,10 @@ const MenuItems = () => {
         <div className="course">
           <h3 className="title">Mains</h3>
           {mains &&
-            mains.map((main) => {
+            mains.map((main, index) => {
               return (
                 <MenuItem
-                  key={main.food_id}
+                  key={index}
                   food={main}
                   handleAddRemove={handleAddRemove}
                 />
@@ -73,10 +78,10 @@ const MenuItems = () => {
         <div className="course">
           <h3 className="title">Desserts</h3>
           {desserts &&
-            desserts.map((dessert) => {
+            desserts.map((dessert, index) => {
               return (
                 <MenuItem
-                  key={dessert.food_id}
+                  key={index}
                   food={dessert}
                   handleAddRemove={handleAddRemove}
                 />
@@ -86,10 +91,10 @@ const MenuItems = () => {
         <div className="course">
           <h3 className="title">Drinks</h3>
           {drinks &&
-            drinks.map((drink) => {
+            drinks.map((drink, index) => {
               return (
                 <MenuItem
-                  key={drink.food_id}
+                  key={index}
                   food={drink}
                   handleAddRemove={handleAddRemove}
                 />

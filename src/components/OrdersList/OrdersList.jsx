@@ -12,8 +12,6 @@ function OrdersList() {
     hour12: true,
   };
 
-  console.log(window.location.pathname);
-
   return (
     <>
       <ul className="orders_list">
