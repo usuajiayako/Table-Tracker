@@ -1,3 +1,5 @@
+$breakpoint-tablet: 768px;
+
 header {
   background-color: grey;
   display: flex;
@@ -15,5 +17,9 @@ header {
       display: flex;
       list-style-type: none;
     }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    background-color: green;
   }
 }
