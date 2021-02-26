@@ -7,11 +7,11 @@ import './NavItem.scss';
 const NavItem = (props) => {
   const { logout } = useContext(AuthContext);
   return props.signout ? (
-    <li onClick={() => logout()}>
+    <li onClick={() => logout()} className="nav-list-item">
       <NavLink to={props.link}>{props.children}</NavLink>
     </li>
   ) : (
-    <li>
+    <li className="nav-list-item">
       <NavLink to={props.link}>{props.children}</NavLink>
     </li>
   );
