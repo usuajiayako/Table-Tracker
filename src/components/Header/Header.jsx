@@ -7,15 +7,6 @@ import { FaBars } from 'react-icons/fa';
 const Header = () => {
   const { currentUser } = useContext(AuthContext);
 
-  // function myFunction() {
-  //   var x = document.getElementById("myTopnav");
-  //   if (x.className === "topnav") {
-  //     x.className += " responsive";
-  //   } else {
-  //     x.className = "topnav";
-  //   }
-  // }
-
   const burgerDropDown = () => {
     const element = document.getElementsByTagName('ul');
     if (element[0].className === 'nav-list') {
