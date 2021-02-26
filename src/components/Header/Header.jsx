@@ -19,6 +19,9 @@ const Header = () => {
               <NavItem link="/admin">Staff</NavItem>
               <NavItem link="/admin/new-user">Add Staff</NavItem>
               <NavItem link="/admin/new-food">Add Food</NavItem>
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                &#9776;
+              </a>
               <NavItem link="/" signout={true}>
                 Sign Out
               </NavItem>

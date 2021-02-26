@@ -1,4 +1,4 @@
-$breakpoint-tablet: 768px;
+$tablet-breakpoint: 768px;
 
 header {
   background-color: grey;
@@ -19,7 +19,16 @@ header {
     }
   }
 
-  @media (max-width: $breakpoint-tablet) {
+  .icon {
+    display: none;
+  }
+
+  @media (max-width: $tablet-breakpoint) {
     background-color: green;
+
+    a:not(:first-child),
+    a.icon {
+      float: right;
+    }
   }
 }
