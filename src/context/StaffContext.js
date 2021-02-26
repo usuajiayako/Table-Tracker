@@ -5,10 +5,6 @@ import axios from 'axios';
 export const StaffContext = createContext();
 
 export const StaffContextProvider = (props) => {
-  const addNewStaff = (staffInfo) => {
-    console.log(staffInfo);
-  };
-
   const [staff, setStaff] = useState([]);
 
   useEffect(() => {
@@ -34,7 +30,7 @@ export const StaffContextProvider = (props) => {
   };
 
   return (
-    <StaffContext.Provider value={{ addNewStaff, staff }}>
+    <StaffContext.Provider value={{ addUser, staff }}>
       {props.children}
     </StaffContext.Provider>
   );
