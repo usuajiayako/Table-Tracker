@@ -9,7 +9,6 @@ const MenuContextProvider = (props) => {
   const [mains, setMains] = useState();
   const [desserts, setDesserts] = useState();
   const [drinks, setDrinks] = useState();
-  // const [foodItems, setFoodItems] = useState([]);
 
   useEffect(() => {
     setStarters(food.filter((item) => item.course === 'starter'));
@@ -19,7 +18,6 @@ const MenuContextProvider = (props) => {
   }, []);
 
   const addFood = (foodInfo) => {
-    // setFoodItems([...foodItems, foodInfo]);
     (async () => {
       try {
         await axios.post('http://localhost:9090/api/food-items', foodInfo);
