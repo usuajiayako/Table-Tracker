@@ -1,3 +1,5 @@
+$tablet-breakpoint: 768px;
+
 header {
   background-color: grey;
   display: flex;
@@ -5,15 +7,35 @@ header {
   padding: 20px 40px;
   align-items: center;
 
-  h1 {
+  .table-title {
     color: white;
     letter-spacing: 2px;
   }
 
-  nav {
-    ul {
+  .nav-list {
+    display: flex;
+    list-style-type: none;
+    list-style: none;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    .icon {
       display: flex;
-      list-style-type: none;
+      float: right;
+    }
+
+    .nav-list {
+      display: none;
+    }
+
+    .nav-list.drop-down {
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
   }
 }

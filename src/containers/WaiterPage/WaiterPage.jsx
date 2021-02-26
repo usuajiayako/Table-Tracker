@@ -32,7 +32,7 @@ const WaiterPage = () => {
   return (
     <div className="waiter_view">
       <h2>Waiter View</h2>
-      <ul>
+      <ul className="table-list">
         {tables.map((table) => {
           return (
             <li key={table.name}>
