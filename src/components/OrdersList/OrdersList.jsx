@@ -12,6 +12,8 @@ function OrdersList() {
     hour12: true,
   };
 
+  console.log(window.location.pathname);
+
   return (
     <>
       <ul className="orders_list">
@@ -24,14 +26,19 @@ function OrdersList() {
                 <h3>Order:</h3>
                 {order.food_items.map((item) => {
                   return (
-                    <div className="order_item">
+                    <div
+                      className="order_item"
+                      key={order.food_items.indexOf(item)}
+                    >
                       <p>Course: {item.course}</p>
                       <p>Food item: {item.name}</p>
                     </div>
                   );
                 })}
               </div>
-              <button>Ready to serve</button>
+              {window.location.pathname === '/kitchen' && (
+                <button>Ready to serve</button>
+              )}
               <h3 className="order_time">
                 Order time:
                 {new Intl.DateTimeFormat('en-GB', dateOptions).format(
