@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { orderData as ordersArr } from '../data/orders';
-import axios from 'axios';
 
 export const OrderContext = createContext();
 
@@ -13,7 +12,7 @@ const sendOrder = (finalisedOrder) => {
   const description = '';
   const foodData = {
     food_items: foodIds,
-    description: description,
+    description: description
   };
   (async () => {
     try {
