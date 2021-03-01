@@ -13,23 +13,38 @@ const FoodForm = () => {
     const foodInfo = {
       name: name,
       price: Number(price),
-      course: course.toLowerCase(),
+      course: course.toLowerCase()
     };
     console.log(foodInfo);
     addFood(foodInfo);
   };
+
+  const validateName = (e) => {
+    const foodName = e.target.value;
+    const classList = e.target.classList;
+
+    if (typeof foodName === 'string' && foodName.length > 2) {
+      classList.remove('invalid');
+      classList.add('valid');
+    } else {
+      classList.remove('valid');
+      classList.add('invalid');
+    }
+  };
+
   return (
     <div className="form-wrapper">
       <form onSubmit={submitForm} className="food-form">
         <h2 className="title">Add food to menu</h2>
         <label htmlFor="name" className="un">
-          Food Name
+          Food Name <span className="text-validate">(2+ characters)</span>
           <br />
           <input
             type="text"
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onBlur={(e) => validateName(e)}
           />
         </label>
         <label htmlFor="price" className="un">
