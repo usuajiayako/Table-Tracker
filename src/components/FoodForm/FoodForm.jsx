@@ -7,6 +7,7 @@ const FoodForm = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [course, setCourse] = useState('');
+  const [foodValid, setFoodValid] = useState(true);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -26,9 +27,11 @@ const FoodForm = () => {
     if (typeof foodName === 'string' && foodName.length > 2) {
       classList.remove('invalid');
       classList.add('valid');
+      setFoodValid(true);
     } else {
       classList.remove('valid');
       classList.add('invalid');
+      setFoodValid(false);
     }
   };
 
@@ -37,8 +40,7 @@ const FoodForm = () => {
       <form onSubmit={submitForm} className="food-form">
         <h2 className="title">Add food to menu</h2>
         <label htmlFor="name" className="un">
-          Food Name <span className="text-validate">(2+ characters)</span>
-          <br />
+          Food Name <br />
           <input
             type="text"
             name="name"
@@ -46,6 +48,9 @@ const FoodForm = () => {
             onChange={(e) => setName(e.target.value)}
             onBlur={(e) => validateName(e)}
           />
+          <span className="text-validate" hidden={foodValid}>
+            <br /> (2+ characters)
+          </span>
         </label>
         <label htmlFor="price" className="un">
           Price
