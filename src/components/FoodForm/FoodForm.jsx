@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { MenuContext } from '../../context/MenuContext';
 import './FoodForm.scss';
 
@@ -9,16 +9,30 @@ const FoodForm = () => {
   const [course, setCourse] = useState('');
   const [foodValid, setFoodValid] = useState(true);
   const [priceValid, setPriceValid] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    const regex = /^\d+(\.\d{1,2})?$/;
+
+    if (foodValid && priceValid && name.length >= 2 && regex.test(price)) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [foodValid, priceValid]);
 
   const submitForm = e => {
     e.preventDefault();
-    const foodInfo = {
-      name: name,
-      price: Number(price),
-      course: course.toLowerCase()
-    };
-    console.log(foodInfo);
-    addFood(foodInfo);
+    console.log('submitting form');
+    if (true) {
+      const foodInfo = {
+        name: name,
+        price: Number(price),
+        course: course.toLowerCase()
+      };
+      addFood(foodInfo);
+    } else {
+    }
   };
 
   const validateName = e => {
@@ -77,6 +91,7 @@ const FoodForm = () => {
             value={price}
             onChange={e => setPrice(e.target.value)}
             onBlur={e => validatePrice(e)}
+            id="validate-price-food-form"
           />
           <span className="text-validate" hidden={priceValid}>
             <br /> (max 2 decimal places)
@@ -96,7 +111,9 @@ const FoodForm = () => {
             <option>Drinks</option>
           </select>
         </label>
-        <button type="submit">Add Food Item</button>
+        <button type="submit" disabled={buttonDisabled}>
+          Add Food Item
+        </button>
       </form>
     </div>
   );
