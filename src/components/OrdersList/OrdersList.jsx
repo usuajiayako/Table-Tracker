@@ -6,42 +6,40 @@ import { OrderContext } from '../../context/OrderContext';
 function OrdersList() {
   const { orders } = useContext(OrderContext);
 
-  const dateOptions = {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  };
+  // const dateOptions = {
+  //   hour: 'numeric',
+  //   minute: 'numeric',
+  //   hour12: true,
+  // };
 
+  console.log(orders);
   return (
     <>
       <ul className="orders_list">
-        {orders.map((order) => {
+        {orders.map((order, index) => {
           return (
-            <li key={order.order_id} className="order_card">
+            <li key={index} className="order_card">
               <h2>Table: {order.table_id}</h2>
               <p className="order_item">Notes: {order.description}</p>
               <div className="food_list">
                 <h3>Order:</h3>
-                {order.food_items.map((item) => {
-                  return (
-                    <div
-                      className="order_item"
-                      key={order.food_items.indexOf(item)}
-                    >
-                      <p>Course: {item.course}</p>
-                      <p>Food item: {item.name}</p>
-                    </div>
-                  );
-                })}
+                {order.food_items &&
+                  order.food_items.map((item, index) => {
+                    return (
+                      <div className="order_item" key={index}>
+                        <p>Food id: {item}</p>
+                      </div>
+                    );
+                  })}
               </div>
               {window.location.pathname === '/kitchen' && (
                 <button>Ready to serve</button>
               )}
               <h3 className="order_time">
-                Order time:
-                {new Intl.DateTimeFormat('en-GB', dateOptions).format(
+                Order time: {order.created_at}
+                {/* {new Intl.DateTimeFormat('en-GB', dateOptions).format(
                   order.created_at
-                )}
+                )} */}
               </h3>
             </li>
           );

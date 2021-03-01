@@ -15,6 +15,8 @@ const MenuItems = () => {
   const [tableName, setTableName] = useState('');
   const [order, setOrder] = useState([]);
 
+  console.log(order);
+
   useEffect(() => {
     setTableName(history.location.search.substring(1));
   }, [history]);
