@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import './Tables.scss';
 
 import { TableContext } from '../../context/TableContext';
 import Popup from '../Popup/Popup';
 
-const Tables = () => {
+function Tables() {
   const [showPopup, setShowPopup] = useState(false);
   const [activeTable, setActiveTable] = useState('');
   const { tables } = useContext(TableContext);
@@ -22,6 +23,8 @@ const Tables = () => {
     setShowPopup(!showPopup);
     console.log(tables);
   }
+
+  console.log(tables);
 
   return (
     <div className="waiter_view">
@@ -59,6 +62,6 @@ const Tables = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Tables;

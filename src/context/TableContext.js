@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const TableContext = createContext();
 
-const TableContextProvider = (props) => {
+export const TableContextProvider = (props) => {
   const [tables, setTables] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const TableContextProvider = (props) => {
         console.log(error.message, 'Error fetching the tables');
       }
     })();
-  });
+  }, []);
 
   return (
     <TableContext.Provider value={{ tables }}>
@@ -24,5 +24,3 @@ const TableContextProvider = (props) => {
     </TableContext.Provider>
   );
 };
-
-export default TableContextProvider;
