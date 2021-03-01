@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { TableContext } from '../../context/TableContext';
 import Popup from '../Popup/Popup';
 
 const Tables = () => {
   const [showPopup, setShowPopup] = useState(false);
-
-  const [tables] = useState([
-    { name: 'table1', status: 'default' },
-    { name: 'table2', status: 'active' },
-    { name: 'table3', status: 'waiting-food' },
-    { name: 'table4', status: 'served' },
-  ]);
   const [activeTable, setActiveTable] = useState('');
+  const { tables } = useContext(TableContext);
+  const history = useHistory();
 
   function togglePopup(table) {
     if (table) {
@@ -26,8 +22,6 @@ const Tables = () => {
     setShowPopup(!showPopup);
     console.log(tables);
   }
-
-  const history = useHistory();
 
   return (
     <div className="waiter_view">
