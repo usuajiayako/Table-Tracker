@@ -12,11 +12,11 @@ const MenuItems = () => {
   const { starters, mains, desserts, drinks } = useContext(MenuContext);
   const { sendOrder } = useContext(OrderContext);
   // const { allFood } = useContext(MenuContext);
-  const [tableName, setTableName] = useState('');
+  const [tableId, setTableId] = useState('');
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    setTableName(history.location.search.substring(1));
+    setTableId(history.location.search.substring(1));
   }, [history]);
 
   // useEffect(() => {
@@ -36,7 +36,7 @@ const MenuItems = () => {
 
   const submitOrder = () => {
     const finalisedOrder = {
-      tableName: tableName,
+      tableId: tableId,
       order: order,
     };
     sendOrder(finalisedOrder);
@@ -44,7 +44,7 @@ const MenuItems = () => {
 
   return (
     <>
-      <h1>Order for Table {tableName}</h1>
+      <h1>Order for Table {tableId}</h1>
       <div className="courses-container">
         <div className="course">
           <h3 className="title">Starters</h3>
