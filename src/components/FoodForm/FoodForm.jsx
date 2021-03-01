@@ -8,8 +8,9 @@ const FoodForm = () => {
   const [price, setPrice] = useState(0);
   const [course, setCourse] = useState('');
   const [foodValid, setFoodValid] = useState(true);
+  const [priceValid, setPriceValid] = useState(true);
 
-  const submitForm = (e) => {
+  const submitForm = e => {
     e.preventDefault();
     const foodInfo = {
       name: name,
@@ -20,7 +21,7 @@ const FoodForm = () => {
     addFood(foodInfo);
   };
 
-  const validateName = (e) => {
+  const validateName = e => {
     const foodName = e.target.value;
     const classList = e.target.classList;
 
@@ -34,6 +35,21 @@ const FoodForm = () => {
       setFoodValid(false);
     }
   };
+  const validatePrice = e => {
+    const price = e.target.value;
+    const classList = e.target.classList;
+    const regex = /^\d+(\.\d{1,2})?$/;
+
+    if (regex.test(price)) {
+      classList.remove('invalid');
+      classList.add('valid');
+      setPriceValid(true);
+    } else {
+      classList.remove('valid');
+      classList.add('invalid');
+      setPriceValid(false);
+    }
+  };
 
   return (
     <div className="form-wrapper">
@@ -45,8 +61,8 @@ const FoodForm = () => {
             type="text"
             name="name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
-            onBlur={(e) => validateName(e)}
+            onChange={e => setName(e.target.value)}
+            onBlur={e => validateName(e)}
           />
           <span className="text-validate" hidden={foodValid}>
             <br /> (2+ characters)
@@ -59,8 +75,12 @@ const FoodForm = () => {
             type="text"
             name="price"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={e => setPrice(e.target.value)}
+            onBlur={e => validatePrice(e)}
           />
+          <span className="text-validate" hidden={priceValid}>
+            <br /> (max 2 decimal places)
+          </span>
         </label>
         <label htmlFor="course" className="un">
           Course
@@ -68,7 +88,7 @@ const FoodForm = () => {
           <select
             name="course"
             value={course}
-            onChange={(e) => setCourse(e.target.value)}
+            onChange={e => setCourse(e.target.value)}
           >
             <option>Starter</option>
             <option>Main</option>
