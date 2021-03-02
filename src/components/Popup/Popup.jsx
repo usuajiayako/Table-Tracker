@@ -16,7 +16,7 @@ function Popup({ table, closePopup, updateTableStatus }) {
         <button onClick={() => updateTableStatus(table, 'default')}>
           De-activate table
         </button>
-        <button onClick={() => history.push(`/menu?${table.name}`)}>
+        <button onClick={() => history.push(`/menu?${table.table_id}`)}>
           Place order
         </button>
       </div>
