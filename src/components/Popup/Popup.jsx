@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './popup.scss';
 
-function Popup({ table, closePopup, updateTableStatus }) {
+function Popup({ table, closePopup, setTableStatus }) {
   const history = useHistory();
   return (
     <div className="popup">
@@ -10,10 +10,10 @@ function Popup({ table, closePopup, updateTableStatus }) {
         <h1>{table.name}</h1>
         <h2>{table.status}</h2>
         <button onClick={closePopup}>Close Popup</button>
-        <button onClick={() => updateTableStatus(table, 'active')}>
+        <button onClick={() => setTableStatus(table, 'active')}>
           Activate table
         </button>
-        <button onClick={() => updateTableStatus(table, 'default')}>
+        <button onClick={() => setTableStatus(table, 'default')}>
           De-activate table
         </button>
         <button onClick={() => history.push(`/menu?${table.table_id}`)}>

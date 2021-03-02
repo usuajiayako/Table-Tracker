@@ -8,8 +8,11 @@ import Popup from '../Popup/Popup';
 function Tables() {
   const [showPopup, setShowPopup] = useState(false);
   const [activeTable, setActiveTable] = useState('');
-  const { tables } = useContext(TableContext);
+  const { tables, updateTableStatus } = useContext(TableContext);
   const history = useHistory();
+  const sortedTables = tables.sort((tableA, tableB) => {
+    return tableA.table_id - tableB.table_id;
+  });
 
   function togglePopup(table) {
     if (table) {
@@ -18,19 +21,17 @@ function Tables() {
     setShowPopup(!showPopup);
   }
 
-  function updateTableStatus(table, newStatus) {
+  function setTableStatus(table, newStatus) {
     setActiveTable((table.status = newStatus));
     setShowPopup(!showPopup);
-    console.log(tables);
+    updateTableStatus(table.table_id, newStatus);
   }
-
-  console.log(tables);
 
   return (
     <div className="waiter_view">
       <h2>Waiter View</h2>
       <ul className="table-list">
-        {tables.map((table) => {
+        {sortedTables.map((table) => {
           return (
             <li key={table.name}>
               <div
@@ -48,7 +49,7 @@ function Tables() {
         <Popup
           table={activeTable}
           closePopup={togglePopup}
-          updateTableStatus={updateTableStatus}
+          setTableStatus={setTableStatus}
         />
       )}
       <div className="waiter-footer">
