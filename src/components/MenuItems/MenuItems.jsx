@@ -42,6 +42,7 @@ const MenuItems = () => {
       order: order,
     };
     sendOrder(finalisedOrder);
+    history.push('/waiter');
   };
 
   return (
