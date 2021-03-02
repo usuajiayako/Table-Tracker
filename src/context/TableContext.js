@@ -3,6 +3,24 @@ import axios from 'axios';
 
 export const TableContext = createContext();
 
+const updateTableStatus = (tableId, newStatus) => {
+  console.log('context');
+
+  const statusObj = { status: newStatus };
+
+  (async () => {
+    try {
+      await axios.patch(
+        `http://localhost:9090/api/tables/${tableId}`,
+        statusObj
+      );
+      console.log('Table served');
+    } catch (error) {
+      console.log(error.message, 'Serving table failed');
+    }
+  })();
+};
+
 export const TableContextProvider = (props) => {
   const [tables, setTables] = useState([]);
 
@@ -19,7 +37,7 @@ export const TableContextProvider = (props) => {
   }, []);
 
   return (
-    <TableContext.Provider value={{ tables }}>
+    <TableContext.Provider value={{ tables, updateTableStatus }}>
       {props.children}
     </TableContext.Provider>
   );

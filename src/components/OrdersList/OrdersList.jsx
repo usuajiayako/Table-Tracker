@@ -2,17 +2,16 @@ import React, { useContext } from 'react';
 import './OrdersList.scss';
 
 import { OrderContext } from '../../context/OrderContext';
+import { TableContext } from '../../context/TableContext';
 
 function OrdersList() {
   const { orders } = useContext(OrderContext);
+  const { updateTableStatus } = useContext(TableContext);
 
-  // const dateOptions = {
-  //   hour: 'numeric',
-  //   minute: 'numeric',
-  //   hour12: true,
-  // };
+  const handleServe = (tableId) => {
+    updateTableStatus(tableId, 'served');
+  };
 
-  console.log(orders);
   return (
     <>
       <ul className="orders_list">
@@ -35,7 +34,9 @@ function OrdersList() {
                   })}
               </div>
               {window.location.pathname === '/kitchen' && (
-                <button>Ready to serve</button>
+                <button onClick={() => handleServe(order.table_id)}>
+                  Ready to serve
+                </button>
               )}
               <h3 className="order_time">
                 Order time: {order.created_at.match(timeRegex)[1]}
