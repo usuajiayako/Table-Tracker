@@ -13,6 +13,7 @@ function StaffForm() {
   const [password, setPassword] = useState('');
   const [staffRole, setStaffRole] = useState('Staff');
   const [validFirstName, setValidFirstName] = useState(true);
+  const [validLastName, setValidLastName] = useState(true);
 
   const submitStaffForm = (event) => {
     event.preventDefault();
@@ -44,6 +45,22 @@ function StaffForm() {
     }
   };
 
+  const validateLastName = (e) => {
+    const lastName = e.target.value;
+    const classList = e.target.classList;
+    const regex = /^[a-z ,.'-]+$/i;
+
+    if (regex.test(lastName)) {
+      classList.remove('invalid');
+      classList.add('valid');
+      setValidLastName(true);
+    } else {
+      classList.remove('valid');
+      classList.add('invalid');
+      setValidLastName(false);
+    }
+  };
+
   return (
     <form onSubmit={submitStaffForm} className="staff-form">
       <label>
@@ -56,7 +73,7 @@ function StaffForm() {
           onBlur={(e) => validateFirstName(e)}
         />
         <span className="invalid-first-name" hidden={validFirstName}>
-          <br /> (2+ characters)
+          <br /> Allowed: (A-Z a-z ' , . -)
         </span>
       </label>
       <label>
@@ -66,7 +83,11 @@ function StaffForm() {
           name="surname"
           value={surname}
           onChange={(event) => setSurname(event.target.value)}
+          onBlur={(e) => validateLastName(e)}
         />
+        <span className="invalid-first-name" hidden={validLastName}>
+          <br /> Allowed: (A-Z a-z ' , . -)
+        </span>
       </label>
       <label>
         Email address
