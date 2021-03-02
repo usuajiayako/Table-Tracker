@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './StaffForm.scss';
 import { StaffContext } from '../../context/StaffContext';
 import { AuthContext } from '../../context/AuthContext';
@@ -16,7 +16,20 @@ function StaffForm() {
   const [validLastName, setValidLastName] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
+  const [submitDisabled, setSubmitDisabled] = useState(true);
 
+  useEffect(() => {
+    const regex = /^\d+(\.\d{1,2})?$/;
+
+    console.log("here", validFirstName && firstName.length > 1 && validLastName  && surname.length > 1 && validEmail && email.length > 1 && validPassword && password.length > 1)
+
+    if (validFirstName && firstName.length > 1 && validLastName  && surname.length > 1 && validEmail && email.length > 1 && validPassword && password.length > 1 ) {
+      setSubmitDisabled(false);
+    } else {
+      setSubmitDisabled(true);
+    }
+  }, [validFirstName, validLastName, validEmail, validPassword]);
+  
   const submitStaffForm = (event) => {
     event.preventDefault();
     const staffInfo = {
@@ -162,7 +175,7 @@ function StaffForm() {
           <option>Staff</option>
         </select>
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={submitDisabled}>Submit</button>
     </form>
   );
 }
