@@ -2,3 +2,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.valid {
+  border-color: green;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.invalid-first-name {
+  color: grey;
+}

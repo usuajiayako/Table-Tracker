@@ -12,6 +12,7 @@ function StaffForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [staffRole, setStaffRole] = useState('Staff');
+  const [validFirstName, setValidFirstName] = useState(true);
 
   const submitStaffForm = (event) => {
     event.preventDefault();
@@ -20,11 +21,27 @@ function StaffForm() {
       last_name: surname,
       email: email,
       password: password,
-      role: staffRole,
+      role: staffRole
     };
 
     addUser(staffInfo);
     signup(email, password);
+  };
+
+  const validateFirstName = (e) => {
+    const firstName = e.target.value;
+    const classList = e.target.classList;
+    const regex = /^[a-z ,.'-]+$/i;
+
+    if (regex.test(firstName)) {
+      classList.remove('invalid');
+      classList.add('valid');
+      setValidFirstName(true);
+    } else {
+      classList.remove('valid');
+      classList.add('invalid');
+      setValidFirstName(false);
+    }
   };
 
   return (
@@ -36,7 +53,11 @@ function StaffForm() {
           name="firstName"
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
+          onBlur={(e) => validateFirstName(e)}
         />
+        <span className="invalid-first-name" hidden={validFirstName}>
+          <br /> (2+ characters)
+        </span>
       </label>
       <label>
         Surname
