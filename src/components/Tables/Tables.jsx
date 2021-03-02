@@ -8,7 +8,7 @@ import Popup from '../Popup/Popup';
 function Tables() {
   const [showPopup, setShowPopup] = useState(false);
   const [activeTable, setActiveTable] = useState('');
-  const { tables } = useContext(TableContext);
+  const { tables, updateTableStatus } = useContext(TableContext);
   const history = useHistory();
 
   function togglePopup(table) {
@@ -18,13 +18,11 @@ function Tables() {
     setShowPopup(!showPopup);
   }
 
-  function updateTableStatus(table, newStatus) {
+  function setTableStatus(table, newStatus) {
     setActiveTable((table.status = newStatus));
     setShowPopup(!showPopup);
-    console.log(tables);
+    updateTableStatus(table.table_id, newStatus);
   }
-
-  console.log(tables);
 
   return (
     <div className="waiter_view">
@@ -48,7 +46,7 @@ function Tables() {
         <Popup
           table={activeTable}
           closePopup={togglePopup}
-          updateTableStatus={updateTableStatus}
+          setTableStatus={setTableStatus}
         />
       )}
       <div className="waiter-footer">
