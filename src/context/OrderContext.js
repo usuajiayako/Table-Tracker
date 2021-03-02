@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { orderData as ordersArr } from '../data/orders';
 import axios from 'axios';
 
 export const OrderContext = createContext();
@@ -31,7 +30,15 @@ const OrderContextProvider = (props) => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    setOrders(ordersArr);
+    (async () => {
+      try {
+        const orders = await axios.get('http://localhost:9090/api/orders');
+        console.log(orders.data.orders);
+        setOrders(orders.data.orders);
+      } catch (error) {
+        console.log(error.message, 'Error getting orders');
+      }
+    })();
   }, []);
 
   return (
