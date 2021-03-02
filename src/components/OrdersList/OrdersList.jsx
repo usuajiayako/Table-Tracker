@@ -27,7 +27,8 @@ function OrdersList() {
                   order.food_items.map((item, index) => {
                     return (
                       <div className="order_item" key={index}>
-                        <p>Food id: {item}</p>
+                        <p>Food: {item.name}</p>
+                        <p>Course: {item.course}</p>
                       </div>
                     );
                   })}
