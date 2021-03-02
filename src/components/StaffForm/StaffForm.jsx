@@ -14,6 +14,7 @@ function StaffForm() {
   const [staffRole, setStaffRole] = useState('Staff');
   const [validFirstName, setValidFirstName] = useState(true);
   const [validLastName, setValidLastName] = useState(true);
+  const [validEmail, setValidEmail] = useState(true);
 
   const submitStaffForm = (event) => {
     event.preventDefault();
@@ -32,7 +33,7 @@ function StaffForm() {
   const validateFirstName = (e) => {
     const firstName = e.target.value;
     const classList = e.target.classList;
-    const regex = /^[a-z ,.'-]+$/i;
+    const regex = /^[a-z,.'-]+$/i;
 
     if (regex.test(firstName)) {
       classList.remove('invalid');
@@ -48,7 +49,7 @@ function StaffForm() {
   const validateLastName = (e) => {
     const lastName = e.target.value;
     const classList = e.target.classList;
-    const regex = /^[a-z ,.'-]+$/i;
+    const regex = /^[a-z,.'-]+$/i;
 
     if (regex.test(lastName)) {
       classList.remove('invalid');
@@ -58,6 +59,22 @@ function StaffForm() {
       classList.remove('valid');
       classList.add('invalid');
       setValidLastName(false);
+    }
+  };
+
+  const validateEmail = (e) => {
+    const email = e.target.value;
+    const classList = e.target.classList;
+    const regex = /^[^\s@]+@[^\s@]+$/;
+
+    if (regex.test(email)) {
+      classList.remove('invalid');
+      classList.add('valid');
+      setValidEmail(true);
+    } else {
+      classList.remove('valid');
+      classList.add('invalid');
+      setValidEmail(false);
     }
   };
 
@@ -72,7 +89,7 @@ function StaffForm() {
           onChange={(event) => setFirstName(event.target.value)}
           onBlur={(e) => validateFirstName(e)}
         />
-        <span className="invalid-first-name" hidden={validFirstName}>
+        <span className="required-message" hidden={validFirstName}>
           <br /> Allowed: (A-Z a-z ' , . -)
         </span>
       </label>
@@ -85,7 +102,7 @@ function StaffForm() {
           onChange={(event) => setSurname(event.target.value)}
           onBlur={(e) => validateLastName(e)}
         />
-        <span className="invalid-first-name" hidden={validLastName}>
+        <span className="required-message" hidden={validLastName}>
           <br /> Allowed: (A-Z a-z ' , . -)
         </span>
       </label>
@@ -96,7 +113,11 @@ function StaffForm() {
           name="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          onBlur={(e) => validateEmail(e)}
         />
+        <span className="required-message" hidden={validEmail}>
+          <br /> Enter a valid email address. Baka
+        </span>
       </label>
       <label>
         Password
