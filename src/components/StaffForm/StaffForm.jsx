@@ -16,20 +16,7 @@ function StaffForm() {
   const [validLastName, setValidLastName] = useState(true);
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
-  const [submitDisabled, setSubmitDisabled] = useState(true);
 
-  useEffect(() => {
-    const regex = /^\d+(\.\d{1,2})?$/;
-
-    console.log("here", validFirstName && firstName.length > 1 && validLastName  && surname.length > 1 && validEmail && email.length > 1 && validPassword && password.length > 1)
-
-    if (validFirstName && firstName.length > 1 && validLastName  && surname.length > 1 && validEmail && email.length > 1 && validPassword && password.length > 1 ) {
-      setSubmitDisabled(false);
-    } else {
-      setSubmitDisabled(true);
-    }
-  }, [validFirstName, validLastName, validEmail, validPassword]);
-  
   const submitStaffForm = (event) => {
     event.preventDefault();
     const staffInfo = {
@@ -44,15 +31,12 @@ function StaffForm() {
     signup(email, password);
   };
 
-  const validateFirstName = (e) => {
-    const firstName = e.target.value;
-    const classList = e.target.classList;
+  const validateFirstName = (firstName, classList) => {
     const regex = /^[a-z,.'-]+$/i;
 
     if (regex.test(firstName)) {
       classList.remove('invalid');
       classList.add('valid');
-      setValidFirstName(true);
     } else {
       classList.remove('valid');
       classList.add('invalid');
@@ -60,9 +44,7 @@ function StaffForm() {
     }
   };
 
-  const validateLastName = (e) => {
-    const lastName = e.target.value;
-    const classList = e.target.classList;
+  const validateLastName = (lastName, classList) => {
     const regex = /^[a-z ,.'-]+$/i;
 
     if (regex.test(lastName)) {
@@ -76,9 +58,7 @@ function StaffForm() {
     }
   };
 
-  const validateEmail = (e) => {
-    const email = e.target.value;
-    const classList = e.target.classList;
+  const validateEmail = (email, classList) => {
     const regex = /^[^\s@]+@[^\s@]+$/;
 
     if (regex.test(email)) {
@@ -92,12 +72,8 @@ function StaffForm() {
     }
   };
 
-  const validatePassword = (e) => {
-    const password = e.target.value;
-    const classList = e.target.classList;
+  const validatePassword = (password, classList) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
-    console.log(regex.test(password))
 
     if (regex.test(password)) {
       classList.remove('invalid');
@@ -119,7 +95,10 @@ function StaffForm() {
           name="firstName"
           value={firstName}
           onChange={(event) => setFirstName(event.target.value)}
-          onBlur={(e) => validateFirstName(e)}
+          onBlur={(event) =>
+            validateFirstName(event.target.value, event.target.classList)
+          }
+          required
         />
         <span className="required-message" hidden={validFirstName}>
           <br /> Allowed: (A-Z a-z ' , . -)
@@ -132,7 +111,10 @@ function StaffForm() {
           name="surname"
           value={surname}
           onChange={(event) => setSurname(event.target.value)}
-          onBlur={(e) => validateLastName(e)}
+          onBlur={(event) =>
+            validateLastName(event.target.value, event.target.classList)
+          }
+          required
         />
         <span className="required-message" hidden={validLastName}>
           <br /> Allowed: (A-Z a-z ' , . -)
@@ -145,7 +127,10 @@ function StaffForm() {
           name="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          onBlur={(e) => validateEmail(e)}
+          onBlur={(event) =>
+            validateEmail(event.target.value, event.target.classList)
+          }
+          required
         />
         <span className="required-message" hidden={validEmail}>
           <br /> Enter a valid email address. Baka
@@ -158,10 +143,14 @@ function StaffForm() {
           name="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-          onBlur={(e) => validatePassword(e)}
+          onBlur={(event) =>
+            validatePassword(event.target.value, event.target.classList)
+          }
+          required
         />
         <span className="required-message" hidden={validPassword}>
-          <br /> Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+          <br /> Minimum eight characters, at least one uppercase letter, one
+          lowercase letter and one number
         </span>
       </label>
       <label>
@@ -175,7 +164,7 @@ function StaffForm() {
           <option>Staff</option>
         </select>
       </label>
-      <button type="submit" disabled={submitDisabled}>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
