@@ -17,6 +17,7 @@ function OrdersList() {
     <>
       <ul className="orders_list">
         {orders.map((order, index) => {
+          const timeRegex = /T(\d{2}:\d{2})/;
           return (
             <li key={index} className="order_card">
               <h2>Table: {order.table_id}</h2>
@@ -37,10 +38,7 @@ function OrdersList() {
                 <button>Ready to serve</button>
               )}
               <h3 className="order_time">
-                Order time: {order.created_at}
-                {/* {new Intl.DateTimeFormat('en-GB', dateOptions).format(
-                  order.created_at
-                )} */}
+                Order time: {order.created_at.match(timeRegex)[1]}
               </h3>
             </li>
           );
