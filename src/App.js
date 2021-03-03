@@ -14,6 +14,7 @@ import KitchenPage from './containers/KitchenPage/KitchenPage';
 import WaiterPage from './containers/WaiterPage/WaiterPage';
 import SigninPage from './containers/SigninPage/SigninPage';
 import ViewOrders from './containers/ViewOrders/ViewOrders';
+import EditFoodPage from './containers/EditFoodPage/EditFoodPage';
 
 const App = () => {
   const routes = (
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/admin" exact component={AllUsersPage} />
       <Route path="/admin/new-user" component={NewUserPage} />
       <Route path="/admin/new-food" component={NewFoodPage} />
+      <Route path="/admin/edit-food" component={EditFoodPage} />
       <Route path="/waiter" component={WaiterPage} />
       <Route path="/cashier" component={CashierPage} />
       <Route path="/kitchen" component={KitchenPage} />
