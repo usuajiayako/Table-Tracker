@@ -6,6 +6,7 @@ import { OrderContext } from '../../context/OrderContext';
 import MenuItem from './MenuItem/MenuItem';
 import Order from '../Order/Order';
 import './MenuItems.scss';
+import { TableContext } from '../../context/TableContext';
 
 const MenuItems = () => {
   const history = useHistory();
@@ -14,8 +15,7 @@ const MenuItems = () => {
   // const { allFood } = useContext(MenuContext);
   const [tableId, setTableId] = useState('');
   const [order, setOrder] = useState([]);
-
-  console.log(order);
+  const { updateTableStatus } = useContext(TableContext);
 
   useEffect(() => {
     setTableId(history.location.search.substring(1));
@@ -42,6 +42,7 @@ const MenuItems = () => {
       order: order,
     };
     sendOrder(finalisedOrder);
+    updateTableStatus(tableId, 'waiting-food');
     history.push('/waiter');
   };
 
@@ -107,7 +108,14 @@ const MenuItems = () => {
       </div>
       <h3>Order:</h3>
       <Order order={order} />
-      <button onClick={submitOrder}>Submit Order</button>
+      {order.length < 1 ? (
+        <>
+          <p>Add to order before submitting</p>
+          <button disabled>Submit Order</button>{' '}
+        </>
+      ) : (
+        <button onClick={submitOrder}>Submit Order</button>
+      )}
     </>
   );
 };
