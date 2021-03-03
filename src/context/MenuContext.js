@@ -52,7 +52,15 @@ const MenuContextProvider = (props) => {
   };
 
   const editFood = (foodInfo, foodId) => {
-    console.log(foodInfo, foodId)
+    console.log(foodInfo, foodId);
+    (async () => {
+      try {
+        await axios.patch(`http://localhost:9090/api/food-items/${foodId}`, foodInfo);
+       
+      } catch (error) {
+        console.log(error.message, 'Adding this food has failed');
+      }
+    })();
   }
 
   return (
