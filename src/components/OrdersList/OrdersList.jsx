@@ -10,7 +10,7 @@ import { SocketContext } from '../../context/SocketContext';
 const socket = io.connect(baseURL);
 
 function OrdersList() {
-  const { orders } = useContext(OrderContext);
+  const { orders, setOrders, setOrderActive } = useContext(OrderContext);
   const { updateTableStatus } = useContext(TableContext);
   const { socket } = useContext(SocketContext);
 
@@ -23,13 +23,19 @@ function OrdersList() {
 
   console.log(orders);
 
-  const handleServe = tableId => {
+  const handleServe = (tableId, orderId) => {
     updateTableStatus(tableId, 'served');
+    setOrderActive(tableId, false);
+    const filteredOrders = orders.filter(order => {
+      return order.order_id !== orderId;
+    });
+    setOrders(filteredOrders);
   };
 
   return (
     <>
       <ul className="orders_list">
+        http://localhost:9090
         {orders.map((order, index) => {
           const timeRegex = /T(\d{2}:\d{2})/;
           return (
@@ -49,7 +55,9 @@ function OrdersList() {
                   })}
               </div>
               {window.location.pathname === '/kitchen' && (
-                <button onClick={() => handleServe(order.table_id)}>
+                <button
+                  onClick={() => handleServe(order.table_id, order.order_id)}
+                >
                   Ready to serve
                 </button>
               )}
