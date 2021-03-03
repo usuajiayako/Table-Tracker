@@ -60,6 +60,7 @@ function Tables() {
           onClick={() => {
             history.push('/view-orders');
           }}
+          className="orders-button submit"
         >
           View all orders
         </button>
