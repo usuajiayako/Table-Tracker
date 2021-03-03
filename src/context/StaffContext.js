@@ -1,16 +1,17 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 // import { usersData } from '../data/users';
+import { baseURL } from '../index';
 
 export const StaffContext = createContext();
 
-export const StaffContextProvider = (props) => {
+export const StaffContextProvider = props => {
   const [staff, setStaff] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
-        const users = await axios.get('http://localhost:9090/api/users');
+        const users = await axios.get(`${baseURL}/api/users`);
         setStaff(users.data.users);
       } catch (error) {
         console.log('No users found');
@@ -18,10 +19,10 @@ export const StaffContextProvider = (props) => {
     })();
   }, []);
 
-  const addUser = (userInfo) => {
+  const addUser = userInfo => {
     (async () => {
       try {
-        await axios.post('http://localhost:9090/api/users', userInfo);
+        await axios.post(`${baseURL}/api/users`, userInfo);
         console.log('New user added');
       } catch (error) {
         console.log(error.message, 'Adding new user failed');

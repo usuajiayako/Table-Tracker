@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { baseURL } from '../index';
 
 export const MenuContext = createContext();
 
@@ -12,7 +13,7 @@ const MenuContextProvider = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const food = await axios.get('http://localhost:9090/api/food-items');
+        const food = await axios.get(`${baseURL}/api/food-items`);
         const foodItems = food.data.foodItems;
         setStarters(
           foodItems.filter(
@@ -43,7 +44,7 @@ const MenuContextProvider = (props) => {
   const addFood = (foodInfo) => {
     (async () => {
       try {
-        await axios.post('http://localhost:9090/api/food-items', foodInfo);
+        await axios.post(`${baseURL}/api/food-items`, foodInfo);
         switch (foodInfo.course) {
           case 'starter':
             setStarters(...starters, foodInfo);
