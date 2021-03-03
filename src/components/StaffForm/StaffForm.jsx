@@ -24,7 +24,7 @@ function StaffForm() {
       last_name: surname,
       email: email,
       password: password,
-      role: staffRole
+      role: staffRole,
     };
 
     addUser(staffInfo);
@@ -87,85 +87,94 @@ function StaffForm() {
   };
 
   return (
-    <form onSubmit={submitStaffForm} className="staff-form">
-      <label>
-        First name
-        <input
-          type="text"
-          name="firstName"
-          value={firstName}
-          onChange={(event) => setFirstName(event.target.value)}
-          onBlur={(event) =>
-            validateFirstName(event.target.value, event.target.classList)
-          }
-          required
-        />
-        <span className="required-message" hidden={validFirstName}>
-          <br /> Allowed: (A-Z a-z ' , . -)
-        </span>
-      </label>
-      <label>
-        Surname
-        <input
-          type="text"
-          name="surname"
-          value={surname}
-          onChange={(event) => setSurname(event.target.value)}
-          onBlur={(event) =>
-            validateLastName(event.target.value, event.target.classList)
-          }
-          required
-        />
-        <span className="required-message" hidden={validLastName}>
-          <br /> Allowed: (A-Z a-z ' , . -)
-        </span>
-      </label>
-      <label>
-        Email address
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          onBlur={(event) =>
-            validateEmail(event.target.value, event.target.classList)
-          }
-          required
-        />
-        <span className="required-message" hidden={validEmail}>
-          <br /> Enter a valid email address. Baka
-        </span>
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          onBlur={(event) =>
-            validatePassword(event.target.value, event.target.classList)
-          }
-          required
-        />
-        <span className="required-message" hidden={validPassword}>
-          <br /> Minimum eight characters, at least one uppercase letter, one
-          lowercase letter and one number
-        </span>
-      </label>
-      <label>
-        Staff role
-        <select
-          name="staffRole"
-          value={staffRole}
-          onChange={(event) => setStaffRole(event.target.value)}
-        >
-          <option>Admin</option>
-          <option>Staff</option>
-        </select>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="form-wrapper">
+      <form onSubmit={submitStaffForm} className="staff-form">
+        <label className="un">
+          First name
+          <br />
+          <input
+            type="text"
+            name="firstName"
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
+            onBlur={(event) =>
+              validateFirstName(event.target.value, event.target.classList)
+            }
+            required
+          />
+          <span className="required-message" hidden={validFirstName}>
+            <br /> Allowed: (A-Z a-z ' , . -)
+          </span>
+        </label>
+        <label className="un">
+          Surname
+          <br />
+          <input
+            type="text"
+            name="surname"
+            value={surname}
+            onChange={(event) => setSurname(event.target.value)}
+            onBlur={(event) =>
+              validateLastName(event.target.value, event.target.classList)
+            }
+            required
+          />
+          <span className="required-message" hidden={validLastName}>
+            <br /> Allowed: (A-Z a-z ' , . -)
+          </span>
+        </label>
+        <label className="un">
+          Email address
+          <br />
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            onBlur={(event) =>
+              validateEmail(event.target.value, event.target.classList)
+            }
+            required
+          />
+          <span className="required-message" hidden={validEmail}>
+            <br /> Enter a valid email address. Baka
+          </span>
+        </label>
+        <label className="pass">
+          Password
+          <br />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            onBlur={(event) =>
+              validatePassword(event.target.value, event.target.classList)
+            }
+            required
+          />
+          <span className="required-message" hidden={validPassword}>
+            <br /> Minimum eight characters, at least one uppercase letter, one
+            lowercase letter and one number
+          </span>
+        </label>
+        <label className="un">
+          Staff role
+          <br />
+          <select
+            name="staffRole"
+            value={staffRole}
+            onChange={(event) => setStaffRole(event.target.value)}
+          >
+            <option>Admin</option>
+            <option>Staff</option>
+          </select>
+        </label>
+        <button type="submit" className="submit">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }
 

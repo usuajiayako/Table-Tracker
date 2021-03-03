@@ -1,14 +1,12 @@
-import "./NewUserPage.scss";
-import StaffForm from "../../components/StaffForm/StaffForm";
+import './NewUserPage.scss';
+import StaffForm from '../../components/StaffForm/StaffForm';
 
-import { StaffContextProvider } from "../../context/StaffContext";
+import { StaffContextProvider } from '../../context/StaffContext';
 
 const NewUserPage = () => {
   return (
     <StaffContextProvider>
-      <div className="form-wrapper">
-        <StaffForm />
-      </div>
+      <StaffForm />
     </StaffContextProvider>
   );
 };
