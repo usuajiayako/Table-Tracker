@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { MenuContext } from '../../context/MenuContext';
 import './EditFoodForm.scss';
 
@@ -10,32 +10,23 @@ const EditFoodForm = () => {
   const [course, setCourse] = useState('');
   const [foodValid, setFoodValid] = useState(true);
   const [priceValid, setPriceValid] = useState(true);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [isActive, setIsActive] = useState(true);
 
-  // useEffect(() => {
-  //   const regex = /^\d+(\.\d{1,2})?$/;
-
-  //   if (foodValid && priceValid && name.length >= 2 && regex.test(price)) {
-  //     setButtonDisabled(false);
-  //   } else {
-  //     setButtonDisabled(true);
-  //   }
-  // }, [foodValid, priceValid]);
-
-  const submitForm = e => {
+  const submitForm = (e) => {
     e.preventDefault();
     console.log('submitting form');
     if (true) {
       const foodInfo = {
         name: name,
         price: Number(price),
-        course: course.toLowerCase()
+        course: course.toLowerCase(),
+        is_active: isActive,
       };
       editFood(foodInfo, foodId);
     }
   };
 
-  const validateName = e => {
+  const validateName = (e) => {
     const foodName = e.target.value;
     const classList = e.target.classList;
 
@@ -49,7 +40,7 @@ const EditFoodForm = () => {
       setFoodValid(false);
     }
   };
-  const validatePrice = e => {
+  const validatePrice = (e) => {
     const price = e.target.value;
     const classList = e.target.classList;
     const regex = /^\d+(\.\d{1,2})?$/;
@@ -76,7 +67,7 @@ const EditFoodForm = () => {
             name="food_id"
             value={foodId}
             required
-            onChange={e => setFoodId(e.target.value)}
+            onChange={(e) => setFoodId(e.target.value)}
           />
         </label>
         <label htmlFor="name" className="un">
@@ -85,8 +76,8 @@ const EditFoodForm = () => {
             type="text"
             name="name"
             value={name}
-            onChange={e => setName(e.target.value)}
-            onBlur={e => validateName(e)}
+            onChange={(e) => setName(e.target.value)}
+            onBlur={(e) => validateName(e)}
             required
           />
           <span className="text-validate" hidden={foodValid}>
@@ -100,8 +91,8 @@ const EditFoodForm = () => {
             type="text"
             name="price"
             value={price}
-            onChange={e => setPrice(e.target.value)}
-            onBlur={e => validatePrice(e)}
+            onChange={(e) => setPrice(e.target.value)}
+            onBlur={(e) => validatePrice(e)}
             id="validate-price-food-form"
             required
           />
@@ -115,10 +106,9 @@ const EditFoodForm = () => {
           <select
             name="course"
             value={course}
-            onChange={e => setCourse(e.target.value)}
+            onChange={(e) => setCourse(e.target.value)}
             required
           >
-
             <option></option>
             <option>Starter</option>
             <option>Main</option>
@@ -126,9 +116,20 @@ const EditFoodForm = () => {
             <option>Drinks</option>
           </select>
         </label>
-        <button type="submit">
-          Edit Food Item
-        </button>
+        <label htmlFor="is_active" className="un">
+          Active?
+          <br />
+          <select
+            name="is_active"
+            value={isActive}
+            onChange={(e) => setIsActive(e.target.value)}
+            required
+          >
+            <option value={true}>True</option>
+            <option value={false}>False</option>
+          </select>
+        </label>
+        <button type="submit">Edit Food Item</button>
       </form>
     </div>
   );

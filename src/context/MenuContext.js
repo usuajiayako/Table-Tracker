@@ -14,10 +14,26 @@ const MenuContextProvider = (props) => {
       try {
         const food = await axios.get('http://localhost:9090/api/food-items');
         const foodItems = food.data.foodItems;
-        setStarters(foodItems.filter((item) => item.course === 'starter'));
-        setMains(foodItems.filter((item) => item.course === 'main'));
-        setDesserts(foodItems.filter((item) => item.course === 'dessert'));
-        setDrinks(foodItems.filter((item) => item.course === 'drinks'));
+        setStarters(
+          foodItems.filter(
+            (item) => item.course === 'starter' && item.is_active === true
+          )
+        );
+        setMains(
+          foodItems.filter(
+            (item) => item.course === 'main' && item.is_active === true
+          )
+        );
+        setDesserts(
+          foodItems.filter(
+            (item) => item.course === 'dessert' && item.is_active === true
+          )
+        );
+        setDrinks(
+          foodItems.filter(
+            (item) => item.course === 'drinks' && item.is_active === true
+          )
+        );
       } catch (error) {
         console.log(error.message, 'Error getting all food items');
       }
@@ -55,13 +71,15 @@ const MenuContextProvider = (props) => {
     console.log(foodInfo, foodId);
     (async () => {
       try {
-        await axios.patch(`http://localhost:9090/api/food-items/${foodId}`, foodInfo);
-       
+        await axios.patch(
+          `http://localhost:9090/api/food-items/${foodId}`,
+          foodInfo
+        );
       } catch (error) {
         console.log(error.message, 'Adding this food has failed');
       }
     })();
-  }
+  };
 
   return (
     <MenuContext.Provider
