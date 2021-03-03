@@ -21,10 +21,7 @@ function Tables() {
   function updateTableStatus(table, newStatus) {
     setActiveTable((table.status = newStatus));
     setShowPopup(!showPopup);
-    console.log(tables);
   }
-
-  console.log(tables);
 
   return (
     <div className="waiter_view">

@@ -1,7 +1,8 @@
-import "./NewUserPage.scss";
-import StaffForm from "../../components/StaffForm/StaffForm";
+import React from 'react';
+import './NewUserPage.scss';
+import StaffForm from '../../components/StaffForm/StaffForm';
 
-import { StaffContextProvider } from "../../context/StaffContext";
+import { StaffContextProvider } from '../../context/StaffContext';
 
 const NewUserPage = () => {
   return (

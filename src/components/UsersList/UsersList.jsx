@@ -11,9 +11,9 @@ function UsersList() {
       <h1>Users List</h1>
       <ul className="users_list">
         {staff ? (
-          staff.map((user) => {
+          staff.map((user, index) => {
             return (
-              <li key={user.email} className="user_card">
+              <li key={index} className="user_card">
                 <h2 className="title">
                   {user.first_name} {user.last_name}
                 </h2>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import io from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
 
 import { MenuContext } from '../../context/MenuContext';
@@ -7,22 +8,18 @@ import MenuItem from './MenuItem/MenuItem';
 import Order from '../Order/Order';
 import './MenuItems.scss';
 
+const socket = io.connect('http://localhost:9090');
+
 const MenuItems = () => {
   const history = useHistory();
   const { starters, mains, desserts, drinks } = useContext(MenuContext);
   const { sendOrder } = useContext(OrderContext);
-  // const { allFood } = useContext(MenuContext);
   const [tableId, setTableId] = useState('');
   const [order, setOrder] = useState([]);
-
-  console.log(order);
 
   useEffect(() => {
     setTableId(history.location.search.substring(1));
   }, [history]);
-
-  // useEffect(() => {
-  // }, []);
 
   const handleAddRemove = (food, num) => {
     if (num === 1) {
@@ -41,6 +38,9 @@ const MenuItems = () => {
       tableId: tableId,
       order: order,
     };
+    socket.on('order', (order) => {
+      console.log(order, 'order');
+    });
     sendOrder(finalisedOrder);
   };
 

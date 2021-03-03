@@ -33,7 +33,7 @@ const OrderContextProvider = (props) => {
     (async () => {
       try {
         const orders = await axios.get('http://localhost:9090/api/orders');
-        console.log(orders.data.orders);
+        // console.log(orders.data.orders);
         setOrders(orders.data.orders);
       } catch (error) {
         console.log(error.message, 'Error getting orders');

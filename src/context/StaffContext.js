@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-// import { usersData } from '../data/users';
 
 export const StaffContext = createContext();
 

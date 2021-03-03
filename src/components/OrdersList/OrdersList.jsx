@@ -1,18 +1,28 @@
 import React, { useContext } from 'react';
+// import io from 'socket.io-client';
 import './OrdersList.scss';
 
 import { OrderContext } from '../../context/OrderContext';
 
+// const socket = io('http://localhost:9090');
+
 function OrdersList() {
   const { orders } = useContext(OrderContext);
 
-  // const dateOptions = {
-  //   hour: 'numeric',
-  //   minute: 'numeric',
-  //   hour12: true,
-  // };
+  // console.log(orders, 'orders');
 
-  console.log(orders);
+  // useEffect(() => {
+  //   const name = 'melissa';
+  //   socket.on('new-order', (name) => {
+  //     console.log(name);
+  //   });
+  //   socket.emit('new-order', name);
+
+  //   socket.on('order', (orders) => {
+  //     console.log(orders);
+  // });
+  // });
+
   return (
     <>
       <ul className="orders_list">
