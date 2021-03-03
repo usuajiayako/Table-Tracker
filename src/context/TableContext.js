@@ -5,7 +5,6 @@ export const TableContext = createContext();
 
 const updateTableStatus = (tableId, newStatus) => {
   const statusObj = { status: newStatus };
-
   (async () => {
     try {
       await axios.patch(

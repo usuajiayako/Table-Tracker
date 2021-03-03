@@ -4,9 +4,11 @@ import './Tables.scss';
 
 import { TableContext } from '../../context/TableContext';
 import Popup from '../Popup/Popup';
+import AlertPopup from '../AlertPopup/AlertPopup';
 
 function Tables() {
   const [showPopup, setShowPopup] = useState(false);
+  // const [showAlert] = useState(false);
   const [activeTable, setActiveTable] = useState('');
   const { tables, updateTableStatus } = useContext(TableContext);
   const history = useHistory();
@@ -41,6 +43,7 @@ function Tables() {
               >
                 {table.name}
               </div>
+              {table.status === 'served' && <AlertPopup table={table} />}
             </li>
           );
         })}
