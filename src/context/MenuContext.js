@@ -51,6 +51,10 @@ const MenuContextProvider = (props) => {
     })();
   };
 
+  const editFood = (foodInfo, foodId) => {
+    console.log(foodInfo, foodId)
+  }
+
   return (
     <MenuContext.Provider
       value={{
@@ -59,6 +63,7 @@ const MenuContextProvider = (props) => {
         desserts,
         drinks,
         addFood,
+        editFood,
       }}
     >
       {props.children}

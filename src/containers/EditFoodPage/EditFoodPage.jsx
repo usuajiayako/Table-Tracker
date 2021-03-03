@@ -1,10 +1,10 @@
-// import FoodForm from '../../components/FoodForm/FoodForm';
+import EditFoodForm from '../../components/EditFoodForm/EditFoodForm';
 import MenuContextProvider from '../../context/MenuContext';
 import './EditFoodPage.scss';
 
 const EditFoodPage = () => (
   <MenuContextProvider>
-    <h1>Edit food</h1>
+   <EditFoodForm />
   </MenuContextProvider>
 );
 
