@@ -26,11 +26,6 @@ const sendOrder = (finalisedOrder) => {
   })();
 };
 
-const setOrderActive = (tableId, active) => {
-  console.log('order context', tableId, active);
-  // is_active: false
-};
-
 const OrderContextProvider = (props) => {
   const [orders, setOrders] = useState([]);
 
@@ -45,8 +40,24 @@ const OrderContextProvider = (props) => {
     })();
   }, []);
 
+  const setOrderActive = (tableId, active) => {
+    const data = { is_active: active };
+    (async () => {
+      try {
+        await axios.patch(
+          `http://localhost:9090/api/tables/${tableId}/orders`,
+          data
+        );
+      } catch (error) {
+        console.log(error.message, 'Serving order failed');
+      }
+    })();
+  };
+
   return (
-    <OrderContext.Provider value={{ orders, sendOrder, setOrderActive }}>
+    <OrderContext.Provider
+      value={{ orders, setOrders, sendOrder, setOrderActive }}
+    >
       {props.children}
     </OrderContext.Provider>
   );
