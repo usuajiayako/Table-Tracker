@@ -108,16 +108,20 @@ const MenuItems = () => {
             })}
         </div>
       </div>
-      <h3>Order:</h3>
-      <Order order={order} />
-      {order.length < 1 ? (
-        <>
-          <p>Add to order before submitting</p>
-          <button disabled>Submit Order</button>{' '}
-        </>
-      ) : (
-        <button onClick={submitOrder}>Submit Order</button>
-      )}
+      <div className="order-container">
+        <h3>Order:</h3>
+        {order.length < 1 ? (
+          <>
+            <p>Add to order before submitting</p>
+            <button disabled>Submit Order</button>{' '}
+          </>
+        ) : (
+          <button onClick={submitOrder} className="submit-button">
+            Submit Order
+          </button>
+        )}
+        <Order order={order} />
+      </div>
     </>
   );
 };

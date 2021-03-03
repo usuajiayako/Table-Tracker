@@ -13,7 +13,7 @@ import { TableContext } from '../../context/TableContext';
 
 function OrdersList() {
   const { orders, setOrders, setOrderActive } = useContext(OrderContext);
-  const { updateTableStatus } = useContext(TableContext);
+  const updateTableStatus = useContext(TableContext);
   // const { socket } = useContext(SocketContext);
   // useEffect(() => {
   //   socket.on('newOrder', order => {
