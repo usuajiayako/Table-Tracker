@@ -26,6 +26,11 @@ const sendOrder = (finalisedOrder) => {
   })();
 };
 
+const setOrderActive = (tableId, active) => {
+  console.log('order context', tableId, active);
+  // is_active: false
+};
+
 const OrderContextProvider = (props) => {
   const [orders, setOrders] = useState([]);
 
@@ -41,7 +46,7 @@ const OrderContextProvider = (props) => {
   }, []);
 
   return (
-    <OrderContext.Provider value={{ orders, sendOrder }}>
+    <OrderContext.Provider value={{ orders, sendOrder, setOrderActive }}>
       {props.children}
     </OrderContext.Provider>
   );

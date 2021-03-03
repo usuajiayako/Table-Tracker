@@ -5,11 +5,12 @@ import { OrderContext } from '../../context/OrderContext';
 import { TableContext } from '../../context/TableContext';
 
 function OrdersList() {
-  const { orders } = useContext(OrderContext);
+  const { orders, setOrderActive } = useContext(OrderContext);
   const { updateTableStatus } = useContext(TableContext);
 
   const handleServe = (tableId) => {
     updateTableStatus(tableId, 'served');
+    setOrderActive(tableId, false);
   };
 
   return (
