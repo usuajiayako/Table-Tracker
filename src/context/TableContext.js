@@ -1,15 +1,27 @@
 import React, { useEffect, createContext, useState } from 'react';
 import axios from 'axios';
+import { baseURL } from '../index';
 
 export const TableContext = createContext();
 
-export const TableContextProvider = (props) => {
+const updateTableStatus = (tableId, newStatus) => {
+  const statusObj = { status: newStatus };
+  (async () => {
+    try {
+      await axios.patch(`${baseURL}/api/tables/${tableId}`, statusObj);
+    } catch (error) {
+      console.log(error.message, 'Serving table failed');
+    }
+  })();
+};
+
+export const TableContextProvider = props => {
   const [tables, setTables] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
-        const tables = await axios.get('http://localhost:9090/api/tables');
+        const tables = await axios.get(`${baseURL}/api/tables`);
         const tableData = tables.data.tables;
         setTables(tableData);
       } catch (error) {
@@ -19,7 +31,7 @@ export const TableContextProvider = (props) => {
   }, []);
 
   return (
-    <TableContext.Provider value={{ tables }}>
+    <TableContext.Provider value={{ tables, updateTableStatus }}>
       {props.children}
     </TableContext.Provider>
   );

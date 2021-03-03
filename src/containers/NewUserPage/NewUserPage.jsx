@@ -7,9 +7,7 @@ import { StaffContextProvider } from '../../context/StaffContext';
 const NewUserPage = () => {
   return (
     <StaffContextProvider>
-      <div className="form-wrapper">
-        <StaffForm />
-      </div>
+      <StaffForm />
     </StaffContextProvider>
   );
 };

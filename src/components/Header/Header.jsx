@@ -41,6 +41,9 @@ const Header = () => {
               <NavItem link="/admin/new-food" className="nav-item">
                 Add Food
               </NavItem>
+              <NavItem link="/admin/edit-food" className="nav-item">
+                Edit Food
+              </NavItem>
               <NavItem link="/" signout={true} className="nav-item">
                 Sign Out
               </NavItem>

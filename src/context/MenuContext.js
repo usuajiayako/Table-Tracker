@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { baseURL } from '../index';
 
 export const MenuContext = createContext();
 
@@ -12,12 +13,28 @@ const MenuContextProvider = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const food = await axios.get('http://localhost:9090/api/food-items');
+        const food = await axios.get(`${baseURL}/api/food-items`);
         const foodItems = food.data.foodItems;
-        setStarters(foodItems.filter((item) => item.course === 'starter'));
-        setMains(foodItems.filter((item) => item.course === 'main'));
-        setDesserts(foodItems.filter((item) => item.course === 'dessert'));
-        setDrinks(foodItems.filter((item) => item.course === 'drinks'));
+        setStarters(
+          foodItems.filter(
+            (item) => item.course === 'starter' && item.is_active === true
+          )
+        );
+        setMains(
+          foodItems.filter(
+            (item) => item.course === 'main' && item.is_active === true
+          )
+        );
+        setDesserts(
+          foodItems.filter(
+            (item) => item.course === 'dessert' && item.is_active === true
+          )
+        );
+        setDrinks(
+          foodItems.filter(
+            (item) => item.course === 'drinks' && item.is_active === true
+          )
+        );
       } catch (error) {
         console.log(error.message, 'Error getting all food items');
       }
@@ -27,7 +44,7 @@ const MenuContextProvider = (props) => {
   const addFood = (foodInfo) => {
     (async () => {
       try {
-        await axios.post('http://localhost:9090/api/food-items', foodInfo);
+        await axios.post(`${baseURL}/api/food-items`, foodInfo);
         switch (foodInfo.course) {
           case 'starter':
             setStarters(...starters, foodInfo);
@@ -51,6 +68,20 @@ const MenuContextProvider = (props) => {
     })();
   };
 
+  const editFood = (foodInfo, foodId) => {
+    console.log(foodInfo, foodId);
+    (async () => {
+      try {
+        await axios.patch(
+          `http://localhost:9090/api/food-items/${foodId}`,
+          foodInfo
+        );
+      } catch (error) {
+        console.log(error.message, 'Adding this food has failed');
+      }
+    })();
+  };
+
   return (
     <MenuContext.Provider
       value={{
@@ -59,6 +90,7 @@ const MenuContextProvider = (props) => {
         desserts,
         drinks,
         addFood,
+        editFood,
       }}
     >
       {props.children}

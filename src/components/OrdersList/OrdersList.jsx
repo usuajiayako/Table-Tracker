@@ -1,31 +1,42 @@
-import React, { useContext } from 'react';
-// import io from 'socket.io-client';
+import React, { useContext, useEffect } from 'react';
 import './OrdersList.scss';
+import io from 'socket.io-client';
+import { baseURL } from '../../index';
 
 import { OrderContext } from '../../context/OrderContext';
+import { TableContext } from '../../context/TableContext';
+import { SocketContext } from '../../context/SocketContext';
+
+const socket = io.connect(baseURL);
 
 // const socket = io('http://localhost:9090');
 
 function OrdersList() {
-  const { orders } = useContext(OrderContext);
+  const { orders, setOrders, setOrderActive } = useContext(OrderContext);
+  const { updateTableStatus } = useContext(TableContext);
+  const { socket } = useContext(SocketContext);
+  useEffect(() => {
+    socket.on('newOrder', order => {
+      console.log(order);
+    });
+    socket.emit('newOrder', orders);
+  }, [orders]);
 
-  // console.log(orders, 'orders');
+  console.log(orders);
 
-  // useEffect(() => {
-  //   const name = 'melissa';
-  //   socket.on('new-order', (name) => {
-  //     console.log(name);
-  //   });
-  //   socket.emit('new-order', name);
-
-  //   socket.on('order', (orders) => {
-  //     console.log(orders);
-  // });
-  // });
+  const handleServe = (tableId, orderId) => {
+    updateTableStatus(tableId, 'served');
+    setOrderActive(tableId, false);
+    const filteredOrders = orders.filter(order => {
+      return order.order_id !== orderId;
+    });
+    setOrders(filteredOrders);
+  };
 
   return (
     <>
       <ul className="orders_list">
+        http://localhost:9090
         {orders.map((order, index) => {
           const timeRegex = /T(\d{2}:\d{2})/;
           return (
@@ -45,7 +56,11 @@ function OrdersList() {
                   })}
               </div>
               {window.location.pathname === '/kitchen' && (
-                <button>Ready to serve</button>
+                <button
+                  onClick={() => handleServe(order.table_id, order.order_id)}
+                >
+                  Ready to serve
+                </button>
               )}
               <h3 className="order_time">
                 Order time: {order.created_at.match(timeRegex)[1]}
