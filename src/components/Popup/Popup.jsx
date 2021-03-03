@@ -9,14 +9,14 @@ function Popup({ table, closePopup, setTableStatus }) {
       <div className="popup_inner">
         <h1>{table.name}</h1>
         <h2>{table.status}</h2>
-        <button onClick={closePopup}>Close Popup</button>
-        <button onClick={() => setTableStatus(table, 'active')}>
+        <button className="popup-button" onClick={closePopup}>Close Popup</button>
+        <button className="popup-button" onClick={() => setTableStatus(table, 'active')}>
           Activate table
         </button>
-        <button onClick={() => setTableStatus(table, 'default')}>
+        <button className="popup-button" onClick={() => setTableStatus(table, 'default')}>
           De-activate table
         </button>
-        <button onClick={() => history.push(`/menu?${table.table_id}`)}>
+        <button className="popup-button" onClick={() => history.push(`/menu?${table.table_id}`)}>
           Place order
         </button>
       </div>
