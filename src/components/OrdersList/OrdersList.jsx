@@ -1,14 +1,29 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './OrdersList.scss';
+import io from 'socket.io-client';
+import { baseURL } from '../../index';
 
 import { OrderContext } from '../../context/OrderContext';
 import { TableContext } from '../../context/TableContext';
+import { SocketContext } from '../../context/SocketContext';
+
+const socket = io.connect(baseURL);
 
 function OrdersList() {
   const { orders } = useContext(OrderContext);
   const { updateTableStatus } = useContext(TableContext);
+  const { socket } = useContext(SocketContext);
 
-  const handleServe = (tableId) => {
+  useEffect(() => {
+    socket.on('newOrder', order => {
+      console.log(order);
+    });
+    socket.emit('newOrder', orders);
+  }, [orders]);
+
+  console.log(orders);
+
+  const handleServe = tableId => {
     updateTableStatus(tableId, 'served');
   };
 
