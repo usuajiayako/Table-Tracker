@@ -5,11 +5,16 @@ import { OrderContext } from '../../context/OrderContext';
 import { TableContext } from '../../context/TableContext';
 
 function OrdersList() {
-  const { orders } = useContext(OrderContext);
+  const { orders, setOrders, setOrderActive } = useContext(OrderContext);
   const { updateTableStatus } = useContext(TableContext);
 
-  const handleServe = (tableId) => {
+  const handleServe = (tableId, orderId) => {
     updateTableStatus(tableId, 'served');
+    setOrderActive(tableId, false);
+    const filteredOrders = orders.filter((order) => {
+      return order.order_id !== orderId;
+    });
+    setOrders(filteredOrders);
   };
 
   return (
@@ -34,7 +39,9 @@ function OrdersList() {
                   })}
               </div>
               {window.location.pathname === '/kitchen' && (
-                <button onClick={() => handleServe(order.table_id)}>
+                <button
+                  onClick={() => handleServe(order.table_id, order.order_id)}
+                >
                   Ready to serve
                 </button>
               )}
