@@ -94,3 +94,15 @@
     }
   }
 }
+
+.valid {
+  border-color: green;
+}
+
+.invalid {
+  border-color: red;
+}
+
+.required-message {
+  color: grey;
+}
