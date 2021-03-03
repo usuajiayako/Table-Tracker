@@ -15,8 +15,6 @@ const MenuItems = () => {
   const [tableId, setTableId] = useState('');
   const [order, setOrder] = useState([]);
 
-  console.log(order);
-
   useEffect(() => {
     setTableId(history.location.search.substring(1));
   }, [history]);
@@ -41,7 +39,9 @@ const MenuItems = () => {
       tableId: tableId,
       order: order,
     };
+    console.log(order);
     sendOrder(finalisedOrder);
+    // table status update
     history.push('/waiter');
   };
 
@@ -107,7 +107,14 @@ const MenuItems = () => {
       </div>
       <h3>Order:</h3>
       <Order order={order} />
-      <button onClick={submitOrder}>Submit Order</button>
+      {order.length < 1 ? (
+        <>
+          <p>Add to order before submitting</p>
+          <button disabled>Submit Order</button>{' '}
+        </>
+      ) : (
+        <button onClick={submitOrder}>Submit Order</button>
+      )}
     </>
   );
 };
