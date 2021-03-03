@@ -30,6 +30,7 @@ const OrderContextProvider = props => {
   useEffect(() => {
     (async () => {
       try {
+
         const orders = await axios.get(`${baseURL}/api/orders`);
         setOrders(orders.data.orders);
       } catch (error) {

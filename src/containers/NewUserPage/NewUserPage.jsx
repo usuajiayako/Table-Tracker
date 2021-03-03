@@ -1,3 +1,4 @@
+import React from 'react';
 import './NewUserPage.scss';
 import StaffForm from '../../components/StaffForm/StaffForm';
 

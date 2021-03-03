@@ -9,11 +9,12 @@ import { SocketContext } from '../../context/SocketContext';
 
 const socket = io.connect(baseURL);
 
+// const socket = io('http://localhost:9090');
+
 function OrdersList() {
   const { orders, setOrders, setOrderActive } = useContext(OrderContext);
   const { updateTableStatus } = useContext(TableContext);
   const { socket } = useContext(SocketContext);
-
   useEffect(() => {
     socket.on('newOrder', order => {
       console.log(order);
