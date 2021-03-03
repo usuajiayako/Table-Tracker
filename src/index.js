@@ -6,6 +6,8 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+export const baseURL = 'http://localhost:9090';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
