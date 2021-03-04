@@ -79,8 +79,7 @@ const MenuItems = () => {
               );
             })}
         </div>
-      </div>
-      <div className="courses-container">
+
         <div className="course">
           <h3 className="title">Desserts</h3>
           {desserts &&
@@ -112,8 +111,10 @@ const MenuItems = () => {
         <h3>Order:</h3>
         {order.length < 1 ? (
           <>
+            <button className="submit-button" disabled>
+              Submit Order
+            </button>{' '}
             <p>Add to order before submitting</p>
-            <button disabled>Submit Order</button>{' '}
           </>
         ) : (
           <button onClick={submitOrder} className="submit-button">

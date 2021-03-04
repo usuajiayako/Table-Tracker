@@ -1,13 +1,16 @@
 .courses-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   margin: 20px 40px;
   letter-spacing: 2px;
 
   .course {
-    min-width: 48%;
+    width: 40vh;
     background-color: rgb(191, 188, 188);
+    overflow: auto;
+    margin: 2vh 2vh;
   }
 
   .title {
@@ -21,6 +24,9 @@
   border: solid black 2px;
   width: auto;
   margin: 20px 40px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 
   .submit-button {
     cursor: pointer;

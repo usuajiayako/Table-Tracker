@@ -31,7 +31,7 @@ function Tables() {
 
   return (
     <div className="waiter_view">
-      <h2>Waiter View</h2>
+      <h1>Tables</h1>
       <ul className="table-list">
         {sortedTables.map((table) => {
           return (
