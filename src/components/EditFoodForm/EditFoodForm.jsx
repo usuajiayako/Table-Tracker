@@ -14,7 +14,6 @@ const EditFoodForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log('submitting form');
     if (true) {
       const foodInfo = {
         name: name,

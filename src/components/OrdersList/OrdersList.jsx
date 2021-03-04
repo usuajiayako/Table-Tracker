@@ -22,8 +22,6 @@ function OrdersList() {
   //   socket.emit('newOrder', orders);
   // }, [orders]);
 
-  console.log(orders);
-
   const handleServe = (tableId, orderId) => {
     updateTableStatus(tableId, 'served');
     setOrderActive(tableId, false);
