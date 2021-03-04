@@ -40,10 +40,10 @@ function OrdersList() {
           const timeRegex = /T(\d{2}:\d{2})/;
           return (
             <li key={index} className="order_card">
-              <h2>Table: {order.table_id}</h2>
+              <h2 className="highlight">Table: {order.table_id}</h2>
               <p className="order_item">Notes: {order.description}</p>
               <div className="food_list">
-                <h3>Order:</h3>
+                <h3 className="highlight">Order:</h3>
                 {order.food_items &&
                   order.food_items.map((item, index) => {
                     return (
@@ -54,16 +54,19 @@ function OrdersList() {
                     );
                   })}
               </div>
-              {window.location.pathname === '/kitchen' && (
-                <button
-                  onClick={() => handleServe(order.table_id, order.order_id)}
-                >
-                  Ready to serve
-                </button>
-              )}
-              <h3 className="order_time">
-                Order time: {order.created_at.match(timeRegex)[1]}
-              </h3>
+              <div className="card_footer">
+                {window.location.pathname === '/kitchen' && (
+                  <button
+                    onClick={() => handleServe(order.table_id, order.order_id)}
+                    className="serve-button"
+                  >
+                    Ready to serve
+                  </button>
+                )}
+                <p className="order_time highlight">
+                  Order time: {order.created_at.match(timeRegex)[1]}
+                </p>
+              </div>
             </li>
           );
         })}
