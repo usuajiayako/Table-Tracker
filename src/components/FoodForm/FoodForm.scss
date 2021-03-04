@@ -1,16 +1,74 @@
-.valid {
-  border-color: green;
-}
+.add-food-wrapper {
+  background-color: #ffffff;
+  width: 400px;
+  height: auto; // 400px
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  min-width: 415px;
+  align-content: center;
 
-.invalid {
-  border-color: red;
-}
+  .valid {
+    border-color: green;
+  }
 
-.text-validate {
-  color: grey;
-}
+  .invalid {
+    border-color: red;
+  }
 
-.food-form {
-  display: flex;
-  flex-direction: column;
+  .text-validate {
+    color: grey;
+  }
+  .title {
+    padding-top: 40px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+  }
+
+  .food-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+
+    .form_field {
+      width: 76%;
+      color: rgb(38, 50, 56);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      background: rgba(136, 126, 126, 0.04);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      box-sizing: border-box;
+      border: 2px solid rgba(0, 0, 0, 0.02);
+      margin-bottom: 50px;
+      margin: auto;
+      text-align: center;
+      margin-bottom: 27px;
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    .form_field:focus {
+      border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    }
+
+    .submit {
+      cursor: pointer;
+      border-radius: 5em;
+      border: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 13px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+      margin: auto;
+      margin-bottom: 2vh;
+    }
+  }
 }

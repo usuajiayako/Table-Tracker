@@ -5,10 +5,10 @@ import { baseURL } from '../index';
 export const MenuContext = createContext();
 
 const MenuContextProvider = (props) => {
-  const [starters, setStarters] = useState();
-  const [mains, setMains] = useState();
-  const [desserts, setDesserts] = useState();
-  const [drinks, setDrinks] = useState();
+  const [starters, setStarters] = useState([]);
+  const [mains, setMains] = useState([]);
+  const [desserts, setDesserts] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -55,7 +55,7 @@ const MenuContextProvider = (props) => {
           case 'dessert':
             setDesserts(...desserts, foodInfo);
             break;
-          case 'drink':
+          case 'drinks':
             setDrinks(...drinks, foodInfo);
             break;
           default:

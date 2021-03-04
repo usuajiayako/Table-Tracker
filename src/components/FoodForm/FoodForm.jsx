@@ -9,17 +9,6 @@ const FoodForm = () => {
   const [course, setCourse] = useState('');
   const [foodValid, setFoodValid] = useState(true);
   const [priceValid, setPriceValid] = useState(true);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
-
-  useEffect(() => {
-    const regex = /^\d+(\.\d{1,2})?$/;
-
-    if (foodValid && priceValid && name.length >= 2 && regex.test(price)) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [foodValid, priceValid]);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -30,6 +19,7 @@ const FoodForm = () => {
         price: Number(price),
         course: course.toLowerCase(),
       };
+      console.log(foodInfo);
       addFood(foodInfo);
     } else {
     }
@@ -66,23 +56,25 @@ const FoodForm = () => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="add-food-wrapper">
+      <h2 className="title">Add Food to Menu</h2>
       <form onSubmit={submitForm} className="food-form">
-        <h2 className="title">Add food to menu</h2>
-        <label htmlFor="name" className="un">
-          Food Name <br />
+        <label htmlFor="name" className="form_field">
+          Food Name
+          <br />
           <input
             type="text"
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             onBlur={(e) => validateName(e)}
+            required
           />
           <span className="text-validate" hidden={foodValid}>
             <br /> (2+ characters)
           </span>
         </label>
-        <label htmlFor="price" className="un">
+        <label htmlFor="price" className="form_field">
           Price
           <br />
           <input
@@ -92,26 +84,29 @@ const FoodForm = () => {
             onChange={(e) => setPrice(e.target.value)}
             onBlur={(e) => validatePrice(e)}
             id="validate-price-food-form"
+            required
           />
           <span className="text-validate" hidden={priceValid}>
             <br /> (max 2 decimal places)
           </span>
         </label>
-        <label htmlFor="course" className="un">
+        <label htmlFor="course" className="form_field">
           Course
           <br />
           <select
             name="course"
             value={course}
             onChange={(e) => setCourse(e.target.value)}
+            required
           >
+            <option></option>
             <option>Starter</option>
             <option>Main</option>
             <option>Dessert</option>
             <option>Drinks</option>
           </select>
         </label>
-        <button type="submit" disabled={buttonDisabled}>
+        <button type="submit" className="submit">
           Add Food Item
         </button>
       </form>
