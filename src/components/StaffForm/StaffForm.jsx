@@ -88,8 +88,9 @@ function StaffForm() {
 
   return (
     <div className="form-wrapper">
+      <h2 className="title">Create User</h2>
       <form onSubmit={submitStaffForm} className="staff-form">
-        <label className="un">
+        <label className="form_field">
           First name
           <br />
           <input
@@ -106,7 +107,7 @@ function StaffForm() {
             <br /> Allowed: (A-Z a-z ' , . -)
           </span>
         </label>
-        <label className="un">
+        <label className="form_field">
           Surname
           <br />
           <input
@@ -123,7 +124,7 @@ function StaffForm() {
             <br /> Allowed: (A-Z a-z ' , . -)
           </span>
         </label>
-        <label className="un">
+        <label className="form_field">
           Email address
           <br />
           <input
@@ -158,7 +159,7 @@ function StaffForm() {
             lowercase letter and one number
           </span>
         </label>
-        <label className="un">
+        <label className="form_field">
           Staff role
           <br />
           <select

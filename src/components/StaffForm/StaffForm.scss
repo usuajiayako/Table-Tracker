@@ -1,16 +1,24 @@
+$mobile-breakpoint: 415px;
+
 .form-wrapper {
   background-color: #ffffff;
-  width: 400px;
-  height: auto; // 400px
-  margin: 7em auto;
-  border-radius: 1.5em;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  width: 100%;
+  margin: 3em auto;
   text-align: center;
-  min-width: 415px;
+
+  @media screen and (min-width: $mobile-breakpoint) {
+    width: 400px;
+    height: auto; // 400px
+    margin: 3em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    min-width: 415px;
+  }
 
   .staff-form {
     display: flex;
     flex-direction: column;
+    padding-top: 40px;
   }
 
   .title {
@@ -20,7 +28,7 @@
     font-size: 23px;
   }
 
-  .un {
+  .form_field {
     width: 76%;
     color: rgb(38, 50, 56);
     font-weight: 700;
@@ -38,10 +46,6 @@
     text-align: center;
     margin-bottom: 27px;
     font-family: 'Ubuntu', sans-serif;
-  }
-
-  form {
-    padding-top: 40px;
   }
 
   .pass {
@@ -80,6 +84,8 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: 13px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    margin: auto;
+    margin-bottom: 2vh;
   }
 
   a {

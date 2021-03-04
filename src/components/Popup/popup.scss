@@ -22,21 +22,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
     .popup-button {
-      display: inline-block;
-      padding: 0.3em 1.2em;
-      margin: 25px 0.3em 0.3em 0;
-      border-radius: 2em;
-      box-sizing: border-box;
-      text-decoration: none;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
-      color: #ffffff;
-      background-color: #079cf3;
-      text-align: center;
-      transition: all 0.2s;
+      cursor: pointer;
+      border-radius: 5em;
+      border: 0;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 13px;
+      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+      border: solid black 1px;
     }
     .popup-button:hover {
       background-color: #4095c6;

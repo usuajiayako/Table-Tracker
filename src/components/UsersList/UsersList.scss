@@ -13,15 +13,18 @@ h1 {
     background-color: rgb(191, 188, 188);
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    width: 30vh;
+    margin: 2vh 2vh;
 
     p {
       padding: 10px 10px 10px 20px;
     }
-  }
 
-  .title {
-    margin: 0;
-    padding: 10px 0 10px 20px;
-    background-color: grey;
+    .title {
+      margin: 0;
+      padding: 10px 0 10px 20px;
+      background-color: grey;
+    }
   }
 }
