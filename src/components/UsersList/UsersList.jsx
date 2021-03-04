@@ -8,7 +8,7 @@ function UsersList() {
 
   return (
     <>
-      <h1>Users List</h1>
+      <h1>Users</h1>
       <ul className="users_list">
         {staff ? (
           staff.map((user, index) => {
