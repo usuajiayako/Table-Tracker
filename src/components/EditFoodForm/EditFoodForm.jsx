@@ -57,10 +57,10 @@ const EditFoodForm = () => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="edit-food-wrapper">
+      <h2 className="title">Edit food</h2>
       <form onSubmit={submitForm} className="food-form">
-        <h2 className="title">Edit food</h2>
-        <label htmlFor="food_id" className="un">
+        <label htmlFor="food_id" className="form_field">
           Food ID <br />
           <input
             type="text"
@@ -70,7 +70,7 @@ const EditFoodForm = () => {
             onChange={(e) => setFoodId(e.target.value)}
           />
         </label>
-        <label htmlFor="name" className="un">
+        <label htmlFor="name" className="form_field">
           Food Name <br />
           <input
             type="text"
@@ -84,7 +84,7 @@ const EditFoodForm = () => {
             <br /> (2+ characters)
           </span>
         </label>
-        <label htmlFor="price" className="un">
+        <label htmlFor="price" className="form_field">
           Price
           <br />
           <input
@@ -100,7 +100,7 @@ const EditFoodForm = () => {
             <br /> (max 2 decimal places)
           </span>
         </label>
-        <label htmlFor="course" className="un">
+        <label htmlFor="course" className="form_field">
           Course
           <br />
           <select
@@ -116,7 +116,7 @@ const EditFoodForm = () => {
             <option>Drinks</option>
           </select>
         </label>
-        <label htmlFor="is_active" className="un">
+        <label htmlFor="is_active" className="form_field">
           Active?
           <br />
           <select
@@ -129,7 +129,9 @@ const EditFoodForm = () => {
             <option value={false}>False</option>
           </select>
         </label>
-        <button type="submit">Edit Food Item</button>
+        <button type="submit" className="submit">
+          Edit Food Item
+        </button>
       </form>
     </div>
   );
