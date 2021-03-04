@@ -30,31 +30,33 @@ function Tables() {
   }
 
   return (
-    <div className="waiter_view">
-      <h1>Tables</h1>
-      <ul className="table-list">
-        {sortedTables.map((table) => {
-          return (
-            <li key={table.name}>
-              <div
-                className={`table-icon ${table.status}`}
-                id={table.name}
-                onClick={() => togglePopup(table)}
-              >
-                {table.name}
-              </div>
-              {table.status === 'served' && <AlertPopup table={table} />}
-            </li>
-          );
-        })}
-      </ul>
-      {showPopup && (
-        <Popup
-          table={activeTable}
-          closePopup={togglePopup}
-          setTableStatus={setTableStatus}
-        />
-      )}
+    <>
+      <div className="waiter_view">
+        <h1>Tables</h1>
+        <ul className="table-list">
+          {sortedTables.map((table) => {
+            return (
+              <li key={table.name}>
+                <div
+                  className={`table-icon ${table.status}`}
+                  id={table.name}
+                  onClick={() => togglePopup(table)}
+                >
+                  {table.name}
+                </div>
+                {table.status === 'served' && <AlertPopup table={table} />}
+              </li>
+            );
+          })}
+        </ul>
+        {showPopup && (
+          <Popup
+            table={activeTable}
+            closePopup={togglePopup}
+            setTableStatus={setTableStatus}
+          />
+        )}
+      </div>
       <div className="waiter-footer">
         <button
           onClick={() => {
@@ -65,7 +67,7 @@ function Tables() {
           View all orders
         </button>
       </div>
-    </div>
+    </>
   );
 }
 
