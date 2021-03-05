@@ -19,15 +19,20 @@ export const TableContextProvider = props => {
   const [tables, setTables] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const tables = await axios.get(`${baseURL}/api/tables`);
-        const tableData = tables.data.tables;
-        setTables(tableData);
-      } catch (error) {
-        console.log(error.message, 'Error fetching the tables');
-      }
-    })();
+    const intervalId = setInterval(() => {
+      (async () => {
+        try {
+          const tables = await axios.get(`${baseURL}/api/tables`);
+          const tableData = tables.data.tables;
+          setTables(tableData);
+        } catch (error) {
+          console.log(error.message, 'Error fetching the tables');
+        }
+      })();
+    }, 3000);
+    return () => {
+      clearInterval(intervalId)
+    }
   }, []);
 
   return (
