@@ -28,15 +28,20 @@ const OrderContextProvider = props => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      try {
-
-        const orders = await axios.get(`${baseURL}/api/orders`);
-        setOrders(orders.data.orders);
-      } catch (error) {
-        console.log(error.message, 'Error getting orders');
-      }
-    })();
+    const intervalId = setInterval(() => {
+      (async () => {
+        try {
+  
+          const orders = await axios.get(`${baseURL}/api/orders`);
+          setOrders(orders.data.orders);
+        } catch (error) {
+          console.log(error.message, 'Error getting orders');
+        }
+      })();
+    }, 3000)
+    return () => {
+      clearInterval(intervalId)
+    }
   }, []);
 
   const setOrderActive = (tableId, active) => {
