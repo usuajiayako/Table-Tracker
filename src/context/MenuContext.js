@@ -69,7 +69,6 @@ const MenuContextProvider = (props) => {
   };
 
   const editFood = (foodInfo, foodId) => {
-    console.log(foodInfo, foodId);
     (async () => {
       try {
         await axios.patch(

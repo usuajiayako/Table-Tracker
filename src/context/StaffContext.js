@@ -4,7 +4,7 @@ import { baseURL } from '../index';
 
 export const StaffContext = createContext();
 
-export const StaffContextProvider = props => {
+export const StaffContextProvider = (props) => {
   const [staff, setStaff] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export const StaffContextProvider = props => {
     })();
   }, []);
 
-  const addUser = userInfo => {
+  const addUser = (userInfo) => {
     (async () => {
       try {
         await axios.post(`${baseURL}/api/users`, userInfo);

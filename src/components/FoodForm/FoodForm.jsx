@@ -12,15 +12,16 @@ const FoodForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log('submitting form');
     if (true) {
       const foodInfo = {
         name: name,
         price: Number(price),
         course: course.toLowerCase(),
       };
-      console.log(foodInfo);
       addFood(foodInfo);
+      setName('');
+      setPrice(0);
+      setCourse('');
     } else {
     }
   };

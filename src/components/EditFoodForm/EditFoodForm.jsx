@@ -14,7 +14,6 @@ const EditFoodForm = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log('submitting form');
     if (true) {
       const foodInfo = {
         name: name,
@@ -23,6 +22,11 @@ const EditFoodForm = () => {
         is_active: isActive,
       };
       editFood(foodInfo, foodId);
+      setFoodId(0);
+      setName('');
+      setPrice(0);
+      setCourse('');
+      setIsActive(true);
     }
   };
 

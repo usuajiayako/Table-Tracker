@@ -38,21 +38,11 @@ function SigninPage() {
           <form onSubmit={handleSubmit}>
             <div className="un " id="email">
               <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                ref={emailRef}
-                value="test@test.com"
-                required
-              />
+              <input type="email" ref={emailRef} required />
             </div>
             <div className="pass" id="password">
               <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                ref={passwordRef}
-                value="password"
-                required
-              />
+              <input type="password" ref={passwordRef} required />
             </div>
             <button className="submit" type="submit" disabled={loading}>
               Sign In
@@ -60,10 +50,7 @@ function SigninPage() {
           </form>
         </div>
       ) : (
-        <div className="login-wrapper">
-          <h2 className="title">Welcome to Table Tracker!</h2>
-          <p>You are currently logged in as {currentUser.email}</p>
-        </div>
+        history.push('/waiter')
       )}
     </>
   );
