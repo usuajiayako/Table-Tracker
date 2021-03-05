@@ -29,6 +29,10 @@ function StaffForm() {
 
     addUser(staffInfo);
     signup(email, password);
+    setFirstName('');
+    setSurname('');
+    setEmail('');
+    setPassword('');
   };
 
   const validateFirstName = (firstName, classList) => {

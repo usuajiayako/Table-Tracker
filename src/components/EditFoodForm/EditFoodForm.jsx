@@ -22,6 +22,11 @@ const EditFoodForm = () => {
         is_active: isActive,
       };
       editFood(foodInfo, foodId);
+      setFoodId(0);
+      setName('');
+      setPrice(0);
+      setCourse('');
+      setIsActive(true);
     }
   };
 

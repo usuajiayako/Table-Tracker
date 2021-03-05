@@ -19,6 +19,9 @@ const FoodForm = () => {
         course: course.toLowerCase(),
       };
       addFood(foodInfo);
+      setName('');
+      setPrice(0);
+      setCourse('');
     } else {
     }
   };
